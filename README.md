@@ -1,4 +1,4 @@
-# ✈️ Off We Go
+# ✈️ OffWeGo
 
 > **Every Mile, Every Moment.**
 
