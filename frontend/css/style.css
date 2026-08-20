@@ -53,6 +53,8 @@ body {
 .home-logo-plane {
     display: inline-block;
     transform: rotate(-45deg);
+    color: #2563eb;
+    font-size: 25px;
 }
 
 .nav-links {
