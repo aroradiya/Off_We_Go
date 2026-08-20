@@ -1,5 +1,5 @@
 /* =========================================
-   OFFWEGO LOGIN PAGE
+   RESET
    ========================================= */
 
 * {
@@ -8,10 +8,16 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fa;
-    color: #17233d;
+    background: #f5f8fb;
+    color: #17243d;
 }
 
 
@@ -20,7 +26,10 @@ body {
    ========================================= */
 
 .navbar {
+    width: 100%;
     height: 76px;
+
+    background: #ffffff;
 
     display: flex;
     align-items: center;
@@ -28,234 +37,293 @@ body {
 
     padding: 0 7%;
 
-    background: #ffffff;
-
     border-bottom: 1px solid #edf0f4;
 }
 
 .brand {
     display: flex;
     align-items: center;
+    gap: 2px;
 
     text-decoration: none;
 }
 
-.offwego-logo {
-    width: 122px;
-    height: auto;
-
-    display: block;
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #17243d;
 }
 
-.nav-links {
+.brand-plane {
+    color: #2867d9;
+    display: inline-block;
+    transform: rotate(-45deg);
+    font-size: 24px;
+}
+
+.navbar nav {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 42px;
 }
 
-.nav-links a {
-    color: #17233d;
-
+.navbar nav a {
     text-decoration: none;
 
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    color: #6c7584;
 
     transition: 0.2s ease;
 }
 
-.nav-links a:hover {
-    color: #2563a8;
+.navbar nav a:hover {
+    color: #2875bd;
 }
 
 
 /* =========================================
-   LOGIN PAGE
+   MAIN
    ========================================= */
 
-.auth-page {
+.login-page {
     min-height: calc(100vh - 76px);
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    padding: 50px 7%;
+    padding: 55px 5%;
 }
 
-.auth-container {
+
+/* =========================================
+   BIG LOGIN CARD
+   ========================================= */
+
+.login-card {
     width: 100%;
     max-width: 1050px;
 
+    min-height: 570px;
+
     display: grid;
-    grid-template-columns: 1fr 430px;
+    grid-template-columns: 1.15fr 0.85fr;
 
-    gap: 80px;
+    background: #ffffff;
 
-    align-items: center;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(30, 50, 80, 0.09);
 }
 
 
 /* =========================================
-   LEFT INTRO
+   LEFT SIDE
    ========================================= */
 
-.auth-intro {
+.welcome-section {
+    position: relative;
+
+    padding: 80px 75px;
+
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(215, 236, 250, 0.8),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fbfdff,
+            #eef7fc
+        );
 }
 
-.intro-content {
-    max-width: 540px;
+
+/* decorative circles */
+
+.welcome-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    right: -180px;
+    top: -160px;
+
+    border: 1px solid rgba(40, 117, 189, 0.08);
+
+    border-radius: 50%;
 }
 
-.eyebrow {
-    display: inline-block;
+.welcome-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -125px;
+    top: -110px;
+
+    border: 1px solid rgba(40, 117, 189, 0.06);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   WELCOME TEXT
+   ========================================= */
+
+.small-heading {
+    position: relative;
+    z-index: 2;
+
+    font-size: 10px;
+
+    letter-spacing: 2.5px;
+
+    font-weight: 700;
+
+    color: #367db8;
 
     margin-bottom: 20px;
-
-    color: #2563a8;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
 }
 
-.auth-intro h1 {
-    font-size: 52px;
-    line-height: 1.05;
+.welcome-section h1 {
+    position: relative;
+    z-index: 2;
 
-    font-weight: 700;
+    font-size: 56px;
 
-    letter-spacing: -2px;
+    line-height: 1.03;
 
-    color: #17233d;
+    letter-spacing: -2.5px;
+
+    color: #17243d;
+
+    margin-bottom: 25px;
 }
 
-.auth-intro h1 span {
-    color: #2563a8;
+.welcome-section h1 span {
+    color: #2875bd;
 }
 
-.auth-intro p {
-    max-width: 480px;
+.welcome-section p {
+    position: relative;
+    z-index: 2;
 
-    margin-top: 24px;
+    max-width: 390px;
 
-    color: #6b7685;
+    font-size: 13px;
 
-    font-size: 14px;
     line-height: 1.8;
+
+    color: #788496;
+
+    margin-bottom: 50px;
 }
 
 
 /* =========================================
-   TRAVEL STATS
+   FEATURES
    ========================================= */
 
-.travel-stats {
-    display: flex;
+.features {
+    position: relative;
+    z-index: 3;
 
-    gap: 42px;
-
-    margin-top: 38px;
-}
-
-.stat {
     display: flex;
     align-items: center;
 
-    gap: 10px;
+    gap: 42px;
 }
 
-.stat strong {
+.feature {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.feature-icon {
+    color: #2875bd;
+
+    font-size: 17px;
+}
+
+.feature strong {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    color: #4b596e;
+}
+
+.feature small {
+    display: block;
+
+    font-size: 9px;
+
+    color: #98a2b1;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+   ========================================= */
+
+.form-section {
+    background: #ffffff;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 34px;
-    height: 34px;
-
-    border-radius: 50%;
-
-    background: #eaf2fa;
-
-    color: #2563a8;
-
-    font-size: 16px;
+    padding: 70px 65px;
 }
 
-.stat span {
-    color: #6b7685;
-
-    font-size: 11px;
-
-    line-height: 1.4;
-}
-
-
-/* =========================================
-   LOGIN CARD
-   ========================================= */
-
-.auth-card {
+.form-container {
     width: 100%;
-
-    padding: 40px;
-
-    background: #ffffff;
-
-    border: 1px solid #e8edf2;
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 18px 45px rgba(25, 45, 70, 0.08);
+    max-width: 360px;
 }
 
 
 /* =========================================
-   CARD HEADER
+   FORM HEADING
    ========================================= */
 
-.card-header {
-    margin-bottom: 30px;
+.form-container h2 {
+    font-size: 28px;
+
+    color: #182640;
+
+    margin-bottom: 9px;
 }
 
-.card-header h2 {
-    color: #17233d;
-
-    font-size: 26px;
-
-    font-weight: 700;
-
-    margin-bottom: 8px;
-}
-
-.card-header p {
-    color: #8993a0;
-
+.form-subtitle {
     font-size: 12px;
-}
 
+    color: #8a94a4;
 
-/* =========================================
-   FORM
-   ========================================= */
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #354052;
-
-    font-size: 12px;
-    font-weight: 600;
+    margin-bottom: 35px;
 }
 
 
@@ -263,108 +331,85 @@ body {
    INPUTS
    ========================================= */
 
-.form-group input {
+.input-group {
+    margin-bottom: 23px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    color: #596579;
+
+    margin-bottom: 9px;
+}
+
+.input-group input {
     width: 100%;
-    height: 48px;
+
+    height: 46px;
 
     padding: 0 14px;
 
-    border: 1px solid #e2e7ee;
+    border: 1px solid #dfe5eb;
 
-    border-radius: 9px;
+    border-radius: 6px;
 
     outline: none;
 
-    background: #fbfcfe;
+    background: #ffffff;
 
-    color: #17233d;
+    color: #26344c;
 
-    font-size: 13px;
+    font-size: 12px;
 
     transition: 0.2s ease;
 }
 
-.form-group input::placeholder {
-    color: #a3adba;
-}
-
-.form-group input:focus {
-    border-color: #79a9d7;
-
-    background: #ffffff;
+.input-group input:focus {
+    border-color: #5b9bd0;
 
     box-shadow:
-        0 0 0 3px rgba(37, 99, 168, 0.08);
+        0 0 0 3px rgba(91, 155, 208, 0.09);
 }
 
 
 /* =========================================
-   PASSWORD
+   PASSWORD LABEL
    ========================================= */
 
 .password-label {
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
+
+    justify-content: space-between;
 }
 
-.password-label a {
-    color: #2563a8;
+.forgot {
+    font-size: 9px;
 
-    font-size: 11px;
+    color: #6b94b8;
 
     text-decoration: none;
 }
 
-.password-label a:hover {
+.forgot:hover {
     text-decoration: underline;
-}
-
-.password-wrapper {
-    position: relative;
-
-    width: 100%;
-}
-
-.password-wrapper input {
-    padding-right: 55px;
-}
-
-.toggle-password {
-    position: absolute;
-
-    right: 12px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border: none;
-
-    background: transparent;
-
-    color: #2563a8;
-
-    cursor: pointer;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    padding: 0;
-}
-
-.toggle-password:hover {
-    color: #174d82;
 }
 
 
 /* =========================================
-   REMEMBER ME
+   REMEMBER
    ========================================= */
 
 .remember-row {
-    margin: 2px 0 20px;
+    margin-top: -4px;
+
+    margin-bottom: 25px;
 }
 
 .remember {
@@ -372,39 +417,22 @@ body {
 
     align-items: center;
 
-    gap: 8px;
+    gap: 7px;
 
     cursor: pointer;
-
-    color: #697586;
-
-    font-size: 11px;
 }
 
 .remember input {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
 
-    accent-color: #2563a8;
-
-    cursor: pointer;
+    accent-color: #182742;
 }
 
+.remember span {
+    font-size: 9px;
 
-/* =========================================
-   LOGIN MESSAGE
-   ========================================= */
-
-.login-message {
-    min-height: 18px;
-
-    margin-bottom: 8px;
-
-    color: #d9534f;
-
-    font-size: 11px;
-
-    text-align: center;
+    color: #8b95a3;
 }
 
 
@@ -414,23 +442,25 @@ body {
 
 .login-btn {
     width: 100%;
-    height: 48px;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #182742;
+
+    color: #ffffff;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 10px;
+    gap: 12px;
 
-    border: none;
+    font-size: 11px;
 
-    border-radius: 9px;
-
-    background: #17233d;
-
-    color: #ffffff;
-
-    font-size: 13px;
     font-weight: 600;
 
     cursor: pointer;
@@ -439,23 +469,13 @@ body {
 }
 
 .login-btn:hover {
-    background: #2563a8;
+    background: #253956;
 
     transform: translateY(-1px);
 }
 
-.login-btn:active {
-    transform: translateY(0);
-}
-
-.btn-arrow {
-    font-size: 16px;
-
-    transition: 0.2s ease;
-}
-
-.login-btn:hover .btn-arrow {
-    transform: translateX(3px);
+.arrow {
+    font-size: 15px;
 }
 
 
@@ -470,7 +490,7 @@ body {
 
     gap: 12px;
 
-    margin: 26px 0;
+    margin: 28px 0 22px;
 }
 
 .divider::before,
@@ -481,13 +501,13 @@ body {
 
     height: 1px;
 
-    background: #edf0f4;
+    background: #edf0f3;
 }
 
 .divider span {
-    color: #a0a8b3;
+    font-size: 9px;
 
-    font-size: 10px;
+    color: #a3aab5;
 }
 
 
@@ -496,94 +516,142 @@ body {
    ========================================= */
 
 .register-text {
-    color: #8993a0;
-
-    font-size: 11px;
-
     text-align: center;
+
+    font-size: 10px;
+
+    color: #929aa7;
 }
 
 .register-text a {
-    color: #2563a8;
+    color: #2875bd;
 
     font-weight: 600;
 
     text-decoration: none;
 }
 
-.register-text a:hover {
-    text-decoration: underline;
+
+/* =========================================
+   LARGE SCREENS
+   ========================================= */
+
+@media (min-width: 1400px) {
+
+    .login-card {
+        max-width: 1150px;
+        min-height: 620px;
+    }
+
+    .welcome-section {
+        padding-left: 90px;
+    }
+
+    .welcome-section h1 {
+        font-size: 62px;
+    }
+
+    .form-section {
+        padding: 80px;
+    }
 }
 
 
 /* =========================================
-   RESPONSIVE
+   TABLET
    ========================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
 
-    .auth-container {
-        grid-template-columns: 1fr;
-
-        max-width: 500px;
-
-        gap: 35px;
+    .login-card {
+        grid-template-columns: 1fr 0.9fr;
     }
 
-    .auth-intro {
-        text-align: center;
-
-        justify-content: center;
+    .welcome-section {
+        padding: 55px;
     }
 
-    .intro-content {
-        max-width: 500px;
+    .welcome-section h1 {
+        font-size: 45px;
     }
 
-    .auth-intro h1 {
-        font-size: 42px;
+    .features {
+        gap: 20px;
     }
 
-    .auth-intro p {
-        margin-left: auto;
-        margin-right: auto;
+    .form-section {
+        padding: 45px;
     }
-
-    .travel-stats {
-        justify-content: center;
-    }
-
 }
 
 
-@media (max-width: 600px) {
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
 
     .navbar {
         padding: 0 5%;
     }
 
-    .nav-links {
-        gap: 14px;
+    .navbar nav {
+        gap: 15px;
     }
 
-    .nav-links a {
-        font-size: 11px;
+    .navbar nav a {
+        font-size: 10px;
     }
 
-    .auth-page {
-        padding: 35px 5%;
+    .login-page {
+        padding: 25px 15px;
     }
 
-    .auth-card {
-        padding: 28px 22px;
+    .login-card {
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
     }
 
-    .auth-intro h1 {
-        font-size: 36px;
+    .welcome-section {
+        min-height: 380px;
+
+        padding: 50px 40px;
     }
 
-    .travel-stats {
-        gap: 20px;
+    .welcome-section h1 {
+        font-size: 45px;
     }
 
+    .form-section {
+        padding: 50px 40px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .navbar nav a:nth-child(2) {
+        display: none;
+    }
+
+    .welcome-section {
+        padding: 40px 25px;
+    }
+
+    .welcome-section h1 {
+        font-size: 38px;
+    }
+
+    .features {
+        gap: 15px;
+    }
+
+    .form-section {
+        padding: 40px 25px;
+    }
 }
