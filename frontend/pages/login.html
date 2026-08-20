@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | OffWeGo</title>
+    <title>OffWeGo | Login</title>
 
     <link rel="stylesheet" href="../css/auth.css">
 </head>
 
 <body>
 
-    <!-- Navbar -->
+    <!-- ================= NAVBAR ================= -->
     <header class="navbar">
 
         <a href="../index.html" class="brand">
-            <img
-                src="../assets/offwego-logo.png"
-                alt="OffWeGo"
-                class="offwego-logo"
-            >
+            <span class="brand-name">OffWeGo</span>
+            <span class="brand-plane">✈</span>
         </a>
 
-        <nav class="nav-links">
+        <nav>
             <a href="../index.html">Home</a>
             <a href="destinations.html">Destinations</a>
             <a href="register.html">Create Account</a>
@@ -31,49 +28,56 @@
     </header>
 
 
-    <!-- Login Page -->
-    <main class="auth-page">
+    <!-- ================= LOGIN SECTION ================= -->
+    <main class="login-page">
 
-        <div class="auth-container">
+        <div class="login-card">
 
-            <!-- Left Side -->
-            <section class="auth-intro">
+            <!-- LEFT SIDE -->
+            <section class="welcome-section">
 
-                <div class="intro-content">
+                <!-- <span class="small-heading">
+                    
+                </span> -->
 
-                    <span class="eyebrow">
-                        WELCOME TO OFFWEGO
-                    </span>
+                <h1>
+                    Ready to<br>
+                    <span>go places?</span>
+                </h1>
 
-                    <h1>
-                        Plan smarter.<br>
-                        <span>Travel better.</span>
-                    </h1>
+                <p>
+                    Your next adventure is waiting.
+                    Log in to continue planning smarter,
+                    discovering new destinations, and
+                    creating unforgettable trips.
+                </p>
 
-                    <p>
-                        Your next adventure is waiting.
-                        Sign in to continue planning smarter,
-                        discovering new destinations, and
-                        creating unforgettable trips.
-                    </p>
 
-                    <div class="travel-stats">
+                <!-- FEATURES -->
+                <div class="features">
 
-                        <div class="stat">
-                            <strong>✦</strong>
-                            <span>Smart<br>Planning</span>
+                    <div class="feature">
+                        <span class="feature-icon">✦</span>
+                        <div>
+                            <strong>Smart</strong>
+                            <small>Planning</small>
                         </div>
+                    </div>
 
-                        <div class="stat">
-                            <strong>⌁</strong>
-                            <span>Personalized<br>Trips</span>
+                    <div class="feature">
+                        <span class="feature-icon">✧</span>
+                        <div>
+                            <strong>Personalized</strong>
+                            <small>Trips</small>
                         </div>
+                    </div>
 
-                        <div class="stat">
-                            <strong>✈</strong>
-                            <span>Travel<br>Better</span>
+                    <div class="feature">
+                        <span class="feature-icon">✈</span>
+                        <div>
+                            <strong>Travel</strong>
+                            <small>Better</small>
                         </div>
-
                     </div>
 
                 </div>
@@ -81,132 +85,105 @@
             </section>
 
 
-            <!-- Login Card -->
-            <section class="auth-card">
+            <!-- RIGHT SIDE -->
+            <section class="form-section">
 
-                <div class="card-header">
+                <div class="form-container">
 
-                    <h2>Welcome back!</h2>
+                    <h2>Welcome back</h2>
 
-                    <p>
+                    <p class="form-subtitle">
                         Sign in to continue your journey.
                     </p>
 
-                </div>
 
+                    <form id="loginForm">
 
-                <!-- Login Form -->
-                <form id="loginForm">
+                        <!-- EMAIL -->
+                        <div class="input-group">
 
-                    <!-- Email -->
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="you@example.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Password -->
-                    <div class="form-group">
-
-                        <div class="password-label">
-
-                            <label for="password">
-                                Password
+                            <label for="email">
+                                Email address
                             </label>
 
-                            <a href="#" id="forgotPassword">
-                                Forgot password?
-                            </a>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
 
                         </div>
 
-                        <div class="password-wrapper">
+
+                        <!-- PASSWORD -->
+                        <div class="input-group password-group">
+
+                            <div class="password-label">
+
+                                <label for="password">
+                                    Password
+                                </label>
+
+                                <a href="#" class="forgot">
+                                    Forgot password?
+                                </a>
+
+                            </div>
 
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                placeholder="Enter your password"
                                 autocomplete="current-password"
                                 required
                             >
 
-                            <button
-                                type="button"
-                                class="toggle-password"
-                                id="togglePassword"
-                                aria-label="Show password"
-                            >
-                                Show
-                            </button>
+                        </div>
+
+
+                        <!-- REMEMBER -->
+                        <div class="remember-row">
+
+                            <label class="remember">
+                                <input
+                                    type="checkbox"
+                                    id="remember"
+                                >
+                                <span>Remember me</span>
+                            </label>
 
                         </div>
 
-                    </div>
+
+                        <!-- LOGIN BUTTON -->
+                        <button
+                            type="submit"
+                            class="login-btn"
+                        >
+                            <span>Log in</span>
+                            <span class="arrow">→</span>
+                        </button>
 
 
-                    <!-- Remember Me -->
-                    <div class="remember-row">
-
-                        <label class="remember">
-
-                            <input
-                                type="checkbox"
-                                id="remember"
-                            >
-
-                            <span>Remember me</span>
-
-                        </label>
-
-                    </div>
+                        <!-- DIVIDER -->
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
 
 
-                    <!-- Login Message -->
-                    <div
-                        id="loginMessage"
-                        class="login-message"
-                    ></div>
+                        <!-- REGISTER -->
+                        <p class="register-text">
+                            Don't have an account?
+                            <a href="register.html">
+                                Create one
+                            </a>
+                        </p>
 
+                    </form>
 
-                    <!-- Login Button -->
-                    <button
-                        type="submit"
-                        class="login-btn"
-                        id="loginBtn"
-                    >
-                        <span>Log in</span>
-                        <span class="btn-arrow">→</span>
-                    </button>
-
-                </form>
-
-
-                <!-- Divider -->
-                <div class="divider">
-                    <span>or</span>
                 </div>
-
-
-                <!-- Register -->
-                <p class="register-text">
-                    Don't have an account?
-                    <a href="register.html">
-                        Create one
-                    </a>
-                </p>
 
             </section>
 
