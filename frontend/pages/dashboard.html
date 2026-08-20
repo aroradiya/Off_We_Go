@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OffWeGo - Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="logo">
+                <span class="logo-plane">✈</span>
+                <span>OffWeGo</span>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="my-trips.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>My Trips</span>
+                </a>
+
+                <a href="wishlist.html" class="nav-item">
+                    <span class="nav-icon">♡</span>
+                    <span>Wishlist</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Bookings</span>
+                </a>
+
+                <a href="assistant.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    <span>Travel Assistant</span>
+                </a>
+
+                <a href="profile.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Profile</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <!-- Logout -->
+            <div class="sidebar-bottom">
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>⇥</span>
+                    <span>Log out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+
+                <div></div>
+
+                <div class="topbar-right">
+
+                    <button class="notification-btn">
+                        ♧
+                    </button>
+
+                    <div class="profile-avatar">
+                        P
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD CONTENT -->
+            <section class="dashboard-content">
+
+                <!-- Welcome -->
+                <div class="welcome-section">
+
+                    <div>
+                        <h1>
+                            Hello, Explorer! 👋
+                        </h1>
+
+                        <p>
+                            Where do you want to go next?
+                        </p>
+                    </div>
+
+                    <button class="new-trip-btn" id="newTripBtn">
+                        <span>+</span>
+                        New Trip
+                    </button>
+
+                </div>
+
+
+                <!-- YOUR TRIPS -->
+                <section class="trips-section">
+
+                    <h2>Your Trips</h2>
+
+                    <div class="trip-grid" id="tripGrid">
+
+                        <!-- Trip 1 -->
+                        <div class="trip-card">
+
+                            <div class="trip-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+                                    alt="Manali mountains"
+                                >
+
+                                <span class="trip-status">
+                                    Upcoming
+                                </span>
+                            </div>
+
+                            <div class="trip-info">
+
+                                <h3>Manali Getaway</h3>
+
+                                <p class="trip-date">
+                                    20 Aug - 24 Aug 2025
+                                </p>
+
+                                <p class="trip-location">
+                                    Manali, Himachal Pradesh
+                                </p>
+
+                                <div class="trip-bottom">
+
+                                    <span>
+                                        ♟ 2 People
+                                    </span>
+
+                                    <strong>
+                                        ₹20,000
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Trip 2 -->
+                        <div class="trip-card">
+
+                            <div class="trip-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1505881502353-a1986add3762?auto=format&fit=crop&w=800&q=80"
+                                    alt="Goa beach"
+                                >
+
+                                <span class="trip-status">
+                                    Upcoming
+                                </span>
+                            </div>
+
+                            <div class="trip-info">
+
+                                <h3>Goa Vacation</h3>
+
+                                <p class="trip-date">
+                                    10 Sep - 14 Sep 2025
+                                </p>
+
+                                <p class="trip-location">
+                                    Goa, India
+                                </p>
+
+                                <div class="trip-bottom">
+
+                                    <span>
+                                        ♟ 4 People
+                                    </span>
+
+                                    <strong>
+                                        ₹15,000
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Trip 3 -->
+                        <div class="trip-card">
+
+                            <div class="trip-image">
+                                <img
+                                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80"
+                                    alt="Dubai skyline"
+                                >
+
+                                <span class="trip-status saved">
+                                    Saved
+                                </span>
+
+                            </div>
+
+                            <div class="trip-info">
+
+                                <h3>Dubai Trip</h3>
+
+                                <p class="trip-date">
+                                    15 Nov - 20 Nov 2025
+                                </p>
+
+                                <p class="trip-location">
+                                    Dubai, UAE
+                                </p>
+
+                                <div class="trip-bottom">
+
+                                    <span>
+                                        ♟ 2 People
+                                    </span>
+
+                                    <strong>
+                                        ₹60,000
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SURPRISE ME -->
+                <section class="surprise-card">
+
+                    <div class="surprise-text">
+
+                        <h2>
+                            Not sure where to go?
+                        </h2>
+
+                        <p>
+                            Let our AI suggest the perfect destination for you.
+                        </p>
+
+                        <button id="surpriseBtn">
+                            Surprise Me ✨
+                        </button>
+
+                    </div>
+
+                    <div class="surprise-image">
+                        🗺️
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/dashboard.js"></script>
+
+</body>
+</html>
