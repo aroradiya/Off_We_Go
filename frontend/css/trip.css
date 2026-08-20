@@ -1,0 +1,890 @@
+/* =====================================================
+   OFFWEGO - PLAN TRIP
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f8fafc;
+
+    color: #15264a;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.trip-header {
+    height: 72px;
+
+    padding: 0 60px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e8edf4;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.logo {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    text-decoration: none;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #000000 !important;
+}
+
+.logo-text {
+    color: #000000 !important;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.logo-plane {
+    color: #2867d9 !important;
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size: 17px;
+}
+.logo-plane {
+    color: #2867d9;
+    display: inline-block;
+    transform: rotate(-45deg);
+    font-size: 24px;
+}
+
+
+/* BACK */
+
+.back-dashboard {
+    text-decoration: none;
+
+    color: #18294b;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.back-dashboard:hover {
+    color: #2867d9;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.trip-container {
+    width: min(1050px, 92%);
+
+    margin: 0 auto;
+
+    padding: 40px 0 60px;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.page-title {
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+.page-title h1 {
+    margin: 0 0 8px;
+
+    font-size: 32px;
+
+    color: #172b55;
+}
+
+.page-title p {
+    margin: 0;
+
+    color: #68758c;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    margin-bottom: 35px;
+}
+
+.progress-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #68758c;
+
+    font-size: 13px;
+
+    min-width: 95px;
+}
+
+.progress-circle {
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #e6ebf3;
+
+    color: #394963;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.progress-item.active {
+    color: #1260e8;
+}
+
+.progress-item.active .progress-circle {
+    background: #1260e8;
+
+    color: white;
+}
+
+.progress-line {
+    width: 100px;
+
+    height: 1px;
+
+    background: #d7dee9;
+
+    margin-top: 19px;
+}
+
+
+/* =====================================================
+   MAIN CARDS
+===================================================== */
+
+.trip-card {
+    background: white;
+
+    border: 1px solid #e4eaf2;
+
+    border-radius: 12px;
+
+    padding: 26px;
+
+    margin-bottom: 16px;
+
+    box-shadow:
+        0 2px 10px rgba(20, 45, 80, 0.035);
+}
+
+.small-card {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+.section-icon {
+    width: 40px;
+
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #123f87;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+.section-heading h2 {
+    margin: 0 0 5px;
+
+    font-size: 19px;
+
+    color: #15284d;
+}
+
+.section-heading p {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #718098;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box {
+    height: 50px;
+
+    border: 1px solid #d8e0eb;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 15px;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+.search-box span {
+    font-size: 26px;
+
+    color: #172b55;
+
+    transform: rotate(-15deg);
+}
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+
+    color: #172b55;
+}
+
+.search-box input::placeholder {
+    color: #7c899e;
+}
+
+
+/* =====================================================
+   POPULAR DESTINATIONS
+===================================================== */
+
+.trip-card h3 {
+    margin: 0 0 14px;
+
+    font-size: 15px;
+
+    color: #172b55;
+}
+
+.destination-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.destination-card {
+    padding: 0;
+
+    background: white;
+
+    border: 1px solid #dfe6ef;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.destination-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #2867d9;
+
+    box-shadow:
+        0 5px 15px rgba(40, 103, 217, 0.1);
+}
+
+.destination-card.selected {
+    border: 2px solid #1260e8;
+}
+
+.destination-card img {
+    width: 100%;
+
+    height: 120px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.destination-info {
+    padding: 12px;
+}
+
+.destination-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+
+    color: #15284d;
+}
+
+.destination-info span {
+    font-size: 12px;
+
+    color: #718098;
+}
+
+
+/* =====================================================
+   DATES
+===================================================== */
+
+.date-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    color: #273958;
+
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    border: 1px solid #d8e0eb;
+
+    border-radius: 8px;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+
+    color: #243451;
+
+    outline: none;
+
+    background: white;
+}
+
+.input-group input:focus {
+    border-color: #2867d9;
+
+    box-shadow:
+        0 0 0 3px rgba(40, 103, 217, 0.08);
+}
+
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.two-column {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+    margin-bottom: 16px;
+}
+
+
+/* =====================================================
+   PEOPLE
+===================================================== */
+
+.people-control {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 45px;
+
+    padding: 12px 0;
+}
+
+.people-control button {
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #eaf1ff;
+
+    color: #1454bb;
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+.people-control button:hover {
+    background: #dce8ff;
+}
+
+.people-number {
+    text-align: center;
+}
+
+.people-number strong {
+    display: block;
+
+    font-size: 27px;
+
+    color: #152b58;
+}
+
+.people-number span {
+    font-size: 12px;
+
+    color: #718098;
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.budget-input {
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #d8e0eb;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.budget-input span {
+    padding: 0 15px;
+
+    font-size: 17px;
+
+    color: #263b5e;
+}
+
+.budget-input input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   INTERESTS
+===================================================== */
+
+.interest-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 12px;
+}
+
+.interest-option {
+    min-height: 58px;
+
+    border: 1px solid #dce3ed;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    color: #253653;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.interest-option input {
+    display: none;
+}
+
+.interest-option span {
+    font-size: 17px;
+}
+
+.interest-option:hover {
+    border-color: #2867d9;
+}
+
+.interest-option:has(input:checked) {
+    background: #edf4ff;
+
+    border-color: #1260e8;
+
+    color: #1254bb;
+}
+
+
+/* =====================================================
+   TRAVEL STYLE
+===================================================== */
+
+.travel-style-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.style-option {
+    min-height: 78px;
+
+    border: 1px solid #dce3ed;
+
+    border-radius: 9px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.style-option input {
+    display: none;
+}
+
+.style-option:hover {
+    border-color: #2867d9;
+}
+
+.style-option:has(input:checked) {
+    border-color: #1260e8;
+
+    background: #f2f6ff;
+}
+
+.radio-circle {
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    border: 1px solid #b7c1d0;
+
+    flex-shrink: 0;
+}
+
+.style-option:has(input:checked)
+.radio-circle {
+    border: 5px solid #1260e8;
+}
+
+.style-emoji {
+    font-size: 22px;
+}
+
+.style-option strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 14px;
+
+    color: #1b2d4d;
+}
+
+.style-option small {
+    display: block;
+
+    color: #7a879a;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+}
+
+.cancel-button {
+    padding: 13px 28px;
+
+    border: 1px solid #d8e0eb;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #18294b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.cancel-button:hover {
+    background: #f6f8fb;
+}
+
+.create-button {
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1260e8;
+
+    color: white;
+
+    padding: 14px 28px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    min-width: 210px;
+}
+
+.create-button span {
+    margin-left: 8px;
+
+    font-size: 18px;
+}
+
+.create-button:hover {
+    background: #0c4fc7;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .trip-header {
+        padding: 0 25px;
+    }
+
+    .destination-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .interest-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .travel-style-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .trip-container {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .trip-header {
+        height: 65px;
+
+        padding: 0 18px;
+    }
+
+    .back-dashboard {
+        font-size: 12px;
+    }
+
+    .page-title h1 {
+        font-size: 26px;
+    }
+
+    .progress-item {
+        min-width: 55px;
+
+        font-size: 10px;
+    }
+
+    .progress-line {
+        width: 30px;
+    }
+
+    .progress-circle {
+        width: 32px;
+
+        height: 32px;
+    }
+
+    .trip-card {
+        padding: 20px;
+    }
+
+    .date-grid,
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .interest-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .form-actions {
+        gap: 12px;
+    }
+
+    .create-button {
+        min-width: 0;
+
+        flex: 1;
+    }
+}

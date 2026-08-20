@@ -37,6 +37,10 @@ body {
 
 /* LOGO */
 
+/* ================================
+   OFFWEGO LOGO
+================================ */
+
 .logo {
     display: flex;
     align-items: center;
@@ -45,16 +49,28 @@ body {
     font-size: 21px;
     font-weight: 700;
 
-    color: #182b55;
-
     padding: 5px 12px 35px;
+
+    color: #000000 !important;
 }
 
+
+/* OffWeGo text */
+.logo-text {
+    color: #000000 !important;
+}
+
+
+/* Airplane */
+.logo-plane {
+    color: #2867d9 !important;
+}
 .logo-plane {
     color: #2867d9;
+    display: inline-block;
+    transform: rotate(-45deg);
+    font-size: 24px;
 }
-
-
 /* NAVIGATION */
 
 .sidebar-nav {
