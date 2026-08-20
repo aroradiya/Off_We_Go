@@ -1,0 +1,589 @@
+/* =========================================
+   OFFWEGO LOGIN PAGE
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #17233d;
+}
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.offwego-logo {
+    width: 122px;
+    height: auto;
+
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #17233d;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #2563a8;
+}
+
+
+/* =========================================
+   LOGIN PAGE
+   ========================================= */
+
+.auth-page {
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 7%;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 1050px;
+
+    display: grid;
+    grid-template-columns: 1fr 430px;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   LEFT INTRO
+   ========================================= */
+
+.auth-intro {
+    display: flex;
+    align-items: center;
+}
+
+.intro-content {
+    max-width: 540px;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #2563a8;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.auth-intro h1 {
+    font-size: 52px;
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+    color: #17233d;
+}
+
+.auth-intro h1 span {
+    color: #2563a8;
+}
+
+.auth-intro p {
+    max-width: 480px;
+
+    margin-top: 24px;
+
+    color: #6b7685;
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TRAVEL STATS
+   ========================================= */
+
+.travel-stats {
+    display: flex;
+
+    gap: 42px;
+
+    margin-top: 38px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.stat strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #eaf2fa;
+
+    color: #2563a8;
+
+    font-size: 16px;
+}
+
+.stat span {
+    color: #6b7685;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   LOGIN CARD
+   ========================================= */
+
+.auth-card {
+    width: 100%;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8edf2;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 18px 45px rgba(25, 45, 70, 0.08);
+}
+
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
+.card-header {
+    margin-bottom: 30px;
+}
+
+.card-header h2 {
+    color: #17233d;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.card-header p {
+    color: #8993a0;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #354052;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #e2e7ee;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #fbfcfe;
+
+    color: #17233d;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #a3adba;
+}
+
+.form-group input:focus {
+    border-color: #79a9d7;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 168, 0.08);
+}
+
+
+/* =========================================
+   PASSWORD
+   ========================================= */
+
+.password-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.password-label a {
+    color: #2563a8;
+
+    font-size: 11px;
+
+    text-decoration: none;
+}
+
+.password-label a:hover {
+    text-decoration: underline;
+}
+
+.password-wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 55px;
+}
+
+.toggle-password {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #2563a8;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    padding: 0;
+}
+
+.toggle-password:hover {
+    color: #174d82;
+}
+
+
+/* =========================================
+   REMEMBER ME
+   ========================================= */
+
+.remember-row {
+    margin: 2px 0 20px;
+}
+
+.remember {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    color: #697586;
+
+    font-size: 11px;
+}
+
+.remember input {
+    width: 14px;
+    height: 14px;
+
+    accent-color: #2563a8;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   LOGIN MESSAGE
+   ========================================= */
+
+.login-message {
+    min-height: 18px;
+
+    margin-bottom: 8px;
+
+    color: #d9534f;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+   ========================================= */
+
+.login-btn {
+    width: 100%;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #17233d;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #2563a8;
+
+    transform: translateY(-1px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.btn-arrow {
+    font-size: 16px;
+
+    transition: 0.2s ease;
+}
+
+.login-btn:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 26px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #edf0f4;
+}
+
+.divider span {
+    color: #a0a8b3;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   REGISTER
+   ========================================= */
+
+.register-text {
+    color: #8993a0;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.register-text a {
+    color: #2563a8;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .auth-container {
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+
+        gap: 35px;
+    }
+
+    .auth-intro {
+        text-align: center;
+
+        justify-content: center;
+    }
+
+    .intro-content {
+        max-width: 500px;
+    }
+
+    .auth-intro h1 {
+        font-size: 42px;
+    }
+
+    .auth-intro p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .travel-stats {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .auth-page {
+        padding: 35px 5%;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+    }
+
+    .auth-intro h1 {
+        font-size: 36px;
+    }
+
+    .travel-stats {
+        gap: 20px;
+    }
+
+}
