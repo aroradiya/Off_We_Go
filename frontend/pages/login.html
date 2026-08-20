@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OffWeGo | Login</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+
+        <a href="../index.html" class="brand">
+            <span class="brand-name">OffWeGo</span>
+            <span class="brand-plane">✈</span>
+        </a>
+
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="register.html">Create Account</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= LOGIN SECTION ================= -->
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <!-- LEFT SIDE -->
+            <section class="welcome-section">
+
+                <!-- <span class="small-heading">
+                    
+                </span> -->
+
+                <h1>
+                    Ready to<br>
+                    <span>go places?</span>
+                </h1>
+
+                <p>
+                    Your next adventure is waiting.
+                    Log in to continue planning smarter,
+                    discovering new destinations, and
+                    creating unforgettable trips.
+                </p>
+
+
+                <!-- FEATURES -->
+                <div class="features">
+
+                    <div class="feature">
+                        <span class="feature-icon">✦</span>
+                        <div>
+                            <strong>Smart</strong>
+                            <small>Planning</small>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <span class="feature-icon">✧</span>
+                        <div>
+                            <strong>Personalized</strong>
+                            <small>Trips</small>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <span class="feature-icon">✈</span>
+                        <div>
+                            <strong>Travel</strong>
+                            <small>Better</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+            <section class="form-section">
+
+                <div class="form-container">
+
+                    <h2>Welcome back</h2>
+
+                    <p class="form-subtitle">
+                        Sign in to continue your journey.
+                    </p>
+
+
+                    <form id="loginForm">
+
+                        <!-- EMAIL -->
+                        <div class="input-group">
+
+                            <label for="email">
+                                Email address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="input-group password-group">
+
+                            <div class="password-label">
+
+                                <label for="password">
+                                    Password
+                                </label>
+
+                                <a href="#" class="forgot">
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- REMEMBER -->
+                        <div class="remember-row">
+
+                            <label class="remember">
+                                <input
+                                    type="checkbox"
+                                    id="remember"
+                                >
+                                <span>Remember me</span>
+                            </label>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+                        <button
+                            type="submit"
+                            class="login-btn"
+                        >
+                            <span>Log in</span>
+                            <span class="arrow">→</span>
+                        </button>
+
+
+                        <!-- DIVIDER -->
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+
+
+                        <!-- REGISTER -->
+                        <p class="register-text">
+                            Don't have an account?
+                            <a href="register.html">
+                                Create one
+                            </a>
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/auth.js"></script>
+
+</body>
+</html>
