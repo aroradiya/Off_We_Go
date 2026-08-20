@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>OffWeGo - Trip Itinerary</title>
+
+    <link rel="stylesheet"
+          href="../css/manaliitenerary.css">
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="top-header">
+
+    <a href="dashboard.html"
+       class="brand">
+
+        <span class="brand-name">
+            OffWeGo
+        </span>
+
+        <span class="brand-plane">
+            ✈
+        </span>
+
+    </a>
+
+
+    <a href="dashboard.html"
+       class="dashboard-link">
+
+        ← &nbsp; Back to Dashboard
+
+    </a>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="page-container">
+
+
+    <!-- =================================================
+         TRIP HEADER
+    ================================================== -->
+
+    <section class="trip-header">
+
+
+        <div class="trip-photo">
+
+            <img
+                id="destinationImage"
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=85"
+                alt="Destination"
+            >
+
+        </div>
+
+
+        <div class="trip-info">
+
+            <h1 id="tripTitle">
+                Manali Getaway
+            </h1>
+
+
+            <div class="trip-location">
+
+                <span>⌖</span>
+
+                <span id="tripLocation">
+                    Manali, Himachal Pradesh
+                </span>
+
+            </div>
+
+
+            <div class="trip-meta">
+
+                <span>▣</span>
+
+                <span id="tripDates">
+                    20 Aug - 24 Aug 2026
+                </span>
+
+                <b>•</b>
+
+                <span id="tripDuration">
+                    4 Days
+                </span>
+
+                <b>•</b>
+
+                <span>♟</span>
+
+                <span id="tripPeople">
+                    2 People
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <span class="upcoming-badge">
+
+            ✓ &nbsp; Upcoming
+
+        </span>
+
+
+        <button
+            class="save-trip"
+            id="saveTripBtn"
+        >
+
+            <span id="saveIcon">
+                ♡
+            </span>
+
+            <span id="saveText">
+                Save Trip
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TABS
+    ================================================== -->
+
+    <nav class="tabs">
+
+        <button
+            class="tab active"
+            data-tab="itinerary"
+        >
+            ☷ &nbsp; Itinerary
+        </button>
+
+
+        <button
+            class="tab"
+            data-tab="map"
+        >
+            ▣ &nbsp; Map
+        </button>
+
+
+        <button
+            class="tab"
+            data-tab="weather"
+        >
+            ☼ &nbsp; Weather
+        </button>
+
+
+        <button
+            class="tab"
+            data-tab="budget"
+        >
+            ₹ &nbsp; Budget
+        </button>
+
+    </nav>
+
+
+
+    <!-- =================================================
+         ITINERARY
+    ================================================== -->
+
+    <section
+        class="tab-content active"
+        id="itinerary"
+    >
+
+
+        <div class="content-layout">
+
+
+            <!-- =================================================
+                 LEFT
+            ================================================== -->
+
+            <div class="itinerary-section">
+
+
+                <div class="section-heading">
+
+                    <h2>
+                        Trip Itinerary
+                    </h2>
+
+                    <p>
+                        Your personalized day-by-day plan
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     DAY 1
+                ================================================== -->
+
+                <article class="day-card">
+
+
+                    <div class="day-card-header">
+
+                        <div class="day-number">
+                            Day 1
+                        </div>
+
+                        <h3>
+                            Arrival & Local Sightseeing
+                        </h3>
+
+                        <div class="day-date">
+                            ▣ &nbsp; 20 August
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                10:00 AM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon blue">
+                                    ●
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Arrival in Manali
+                                </h4>
+
+                                <p>
+                                    Check into your hotel and freshen up.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                12:30 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon orange">
+                                    🍴
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Lunch at Local Restaurant
+                                </h4>
+
+                                <p>
+                                    Try traditional Himachali cuisine.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                2:00 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon green">
+                                    ▲
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Hidimba Devi Temple
+                                </h4>
+
+                                <p>
+                                    Explore the historic temple surrounded by cedar forests.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                4:00 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon purple">
+                                    ♟
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Mall Road
+                                </h4>
+
+                                <p>
+                                    Shopping and local sightseeing.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                7:00 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon orange">
+                                    🍴
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Dinner at Riverside Café
+                                </h4>
+
+                                <p>
+                                    Relax and enjoy the evening.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     DAY 2
+                ================================================== -->
+
+                <article class="day-card">
+
+                    <div class="day-card-header">
+
+                        <div class="day-number">
+                            Day 2
+                        </div>
+
+                        <h3>
+                            Adventure Day
+                        </h3>
+
+                        <div class="day-date">
+                            ▣ &nbsp; 21 August
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                9:00 AM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon green">
+                                    ▲
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Solang Valley
+                                </h4>
+
+                                <p>
+                                    Enjoy mountain views and adventure activities.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                12:30 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon orange">
+                                    🍴
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Mountain Café
+                                </h4>
+
+                                <p>
+                                    Lunch with beautiful mountain views.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                3:00 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon blue">
+                                    ●
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Atal Tunnel Viewpoint
+                                </h4>
+
+                                <p>
+                                    Enjoy panoramic views of the surrounding mountains.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item">
+
+                            <div class="time">
+                                7:00 PM
+                            </div>
+
+                            <div class="timeline-middle">
+
+                                <div class="timeline-icon orange">
+                                    🍴
+                                </div>
+
+                            </div>
+
+                            <div class="activity">
+
+                                <h4>
+                                    Dinner & Relaxation
+                                </h4>
+
+                                <p>
+                                    Return to Manali and enjoy a relaxed evening.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     HIDDEN FULL ITINERARY
+                ================================================== -->
+
+                <div
+                    id="extraDays"
+                    class="extra-days"
+                >
+
+
+                    <!-- =================================================
+                         DAY 3
+                    ================================================== -->
+
+                    <article class="day-card">
+
+                        <div class="day-card-header">
+
+                            <div class="day-number">
+                                Day 3
+                            </div>
+
+                            <h3>
+                                Culture & Nature
+                            </h3>
+
+                            <div class="day-date">
+                                ▣ &nbsp; 22 August
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline">
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    8:30 AM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon green">
+                                        ▲
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Old Manali
+                                    </h4>
+
+                                    <p>
+                                        Walk through the charming streets and explore local cafés.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    11:30 AM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon purple">
+                                        ♟
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Manu Temple
+                                    </h4>
+
+                                    <p>
+                                        Visit the historic temple and explore the surrounding area.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    2:00 PM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon orange">
+                                        🍴
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Local Himachali Lunch
+                                    </h4>
+
+                                    <p>
+                                        Enjoy authentic local dishes at a traditional restaurant.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    4:00 PM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon blue">
+                                        ●
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Van Vihar
+                                    </h4>
+
+                                    <p>
+                                        Relax and take a peaceful walk through the forest.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    7:30 PM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon orange">
+                                        🍴
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Café Hopping
+                                    </h4>
+
+                                    <p>
+                                        Explore popular cafés and enjoy the evening atmosphere.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         DAY 4
+                    ================================================== -->
+
+                    <article class="day-card">
+
+                        <div class="day-card-header">
+
+                            <div class="day-number">
+                                Day 4
+                            </div>
+
+                            <h3>
+                                Leisure & Departure
+                            </h3>
+
+                            <div class="day-date">
+                                ▣ &nbsp; 23 August
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline">
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    8:00 AM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon blue">
+                                        ●
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Morning Walk
+                                    </h4>
+
+                                    <p>
+                                        Enjoy a peaceful morning with views of the Himalayas.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    10:00 AM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon purple">
+                                        ♟
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Local Shopping
+                                    </h4>
+
+                                    <p>
+                                        Pick up souvenirs, woollens and local handicrafts.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    1:00 PM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon orange">
+                                        🍴
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Final Lunch
+                                    </h4>
+
+                                    <p>
+                                        Enjoy one final meal before leaving Manali.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="time">
+                                    3:00 PM
+                                </div>
+
+                                <div class="timeline-middle">
+
+                                    <div class="timeline-icon blue">
+                                        ●
+                                    </div>
+
+                                </div>
+
+                                <div class="activity">
+
+                                    <h4>
+                                        Hotel Checkout
+                                    </h4>
+
+                                    <p>
+                                        Collect your belongings and prepare for departure.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     EXPAND BUTTON
+                ================================================== -->
+
+                <button
+                    id="fullItineraryBtn"
+                    class="full-itinerary-btn"
+                >
+
+                    <span id="expandIcon">
+                        +
+                    </span>
+
+                    <span id="expandText">
+                        View Full Itinerary (4 Days)
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIGHT SIDEBAR
+            ================================================== -->
+
+            <aside class="sidebar">
+
+
+                <!-- WEATHER -->
+
+                <div class="side-card weather-card">
+
+                    <h3>
+                        Weather
+                    </h3>
+
+
+                    <div class="weather-main">
+
+                        <div class="weather-graphic">
+
+                            <span class="sun">
+                                ☀
+                            </span>
+
+                            <span class="cloud">
+                                ☁
+                            </span>
+
+                        </div>
+
+
+                        <div class="temperature">
+
+                            <strong>
+                                22°C
+                            </strong>
+
+                            <span>
+                                Partly Cloudy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-footer">
+
+                        <span>
+                            Min 14°C
+                        </span>
+
+                        <span>
+                            Max 24°C
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SUMMARY -->
+
+                <div class="side-card">
+
+                    <h3>
+                        Trip Summary
+                    </h3>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            ♟ &nbsp; Travellers
+                        </span>
+
+                        <strong id="summaryPeople">
+                            2 People
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            ▣ &nbsp; Duration
+                        </span>
+
+                        <strong id="summaryDuration">
+                            4 Days
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            ₹ &nbsp; Budget
+                        </span>
+
+                        <strong id="summaryBudget">
+                            ₹20,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-item">
+
+                        <span>
+                            ♥ &nbsp; Interests
+                        </span>
+
+                        <strong>
+                            Nature, Food, Adventure
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- INTERESTS -->
+
+                <div class="side-card">
+
+                    <h3>
+                        Your Interests
+                    </h3>
+
+
+                    <div
+                        class="interest-tags"
+                        id="interestTags"
+                    >
+
+                        <span class="tag nature">
+                            Nature
+                        </span>
+
+                        <span class="tag food">
+                            Food
+                        </span>
+
+                        <span class="tag adventure">
+                            Adventure
+                        </span>
+
+                        <span class="tag history">
+                            History
+                        </span>
+
+                        <span class="tag shopping">
+                            Shopping
+                        </span>
+
+                        <span class="tag nightlife">
+                            Nightlife
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TIPS -->
+
+                <div class="side-card tips-card">
+
+                    <h3>
+                        Travel Tips
+                    </h3>
+
+
+                    <div class="tip">
+                        🧥 &nbsp; Carry light woollens.
+                    </div>
+
+
+                    <div class="tip">
+                        👟 &nbsp; Wear comfortable shoes.
+                    </div>
+
+
+                    <div class="tip">
+                        📷 &nbsp; Best views are in the morning.
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MAP
+    ================================================== -->
+
+    <section
+        id="map"
+        class="tab-content"
+    >
+
+        <div class="placeholder">
+
+            <div class="placeholder-icon">
+                🗺️
+            </div>
+
+            <h2>
+                Interactive Map
+            </h2>
+
+            <p>
+                Your itinerary locations will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WEATHER
+    ================================================== -->
+
+    <section
+        id="weather"
+        class="tab-content"
+    >
+
+        <div class="placeholder">
+
+            <div class="placeholder-icon">
+                ☀️
+            </div>
+
+            <h2>
+                Destination Weather
+            </h2>
+
+            <p>
+                Real-time weather information will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BUDGET
+    ================================================== -->
+
+    <section
+        id="budget"
+        class="tab-content"
+    >
+
+        <div class="budget-page">
+
+            <h2>
+                Trip Budget
+            </h2>
+
+            <p>
+                Track your estimated travel expenses.
+            </p>
+
+
+            <div class="budget-grid">
+
+                <div class="budget-box">
+
+                    <span>
+                        Total Budget
+                    </span>
+
+                    <strong id="budgetTotal">
+                        ₹20,000
+                    </strong>
+
+                </div>
+
+
+                <div class="budget-box">
+
+                    <span>
+                        Estimated Spend
+                    </span>
+
+                    <strong>
+                        ₹16,500
+                    </strong>
+
+                </div>
+
+
+                <div class="budget-box">
+
+                    <span>
+                        Remaining
+                    </span>
+
+                    <strong class="green-text">
+                        ₹3,500
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BOTTOM ACTIONS
+    ================================================== -->
+
+    <div class="bottom-actions">
+
+        <a
+            href="plan-trip.html"
+            class="edit-btn"
+        >
+
+            ← &nbsp; Edit Trip
+
+        </a>
+
+
+        <button
+            class="dashboard-btn"
+            id="dashboardBtn"
+        >
+
+            Go to Dashboard
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<script src="../js/manaliitenerary.js"></script>
+
+</body>
+
+</html>

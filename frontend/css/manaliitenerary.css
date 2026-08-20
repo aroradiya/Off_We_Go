@@ -1,0 +1,1499 @@
+/* =====================================================
+   OFFWEGO - ITINERARY PAGE
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    background: #f7f9fc;
+
+    color: #172b55;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.top-header {
+
+    height: 64px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5eaf1;
+
+    padding: 0 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.brand {
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #000000;
+}
+
+
+.brand-name {
+
+    color: #000000;
+}
+
+
+.brand-plane {
+
+    color: #2867d9;
+
+    font-size: 15px;
+
+    transform: translateY(-1px);
+}
+.brand-plane {
+    color: #2867d9;
+    display: inline-block;
+    transform: rotate(-45deg);
+    font-size: 24px;
+}
+
+
+/* =====================================================
+   DASHBOARD LINK
+===================================================== */
+
+.dashboard-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    text-decoration: none;
+
+    color: #172b55;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+
+.dashboard-link:hover {
+
+    color: #1260e8;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.page-container {
+
+    width: min(930px, 94%);
+
+    margin: 0 auto;
+
+    padding: 16px 0 14px;
+}
+
+
+/* =====================================================
+   TRIP HEADER
+===================================================== */
+
+.trip-header {
+
+    min-height: 91px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 12px;
+}
+
+
+.trip-photo {
+
+    width: 141px;
+
+    height: 75px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+}
+
+
+.trip-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.trip-info {
+
+    flex: 1;
+}
+
+
+.trip-title-line {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.trip-title-line h1 {
+
+    margin: 0;
+
+    color: #152750;
+
+    font-size: 20px;
+
+    line-height: 1.2;
+}
+
+
+.trip-location {
+
+    margin-top: 7px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 11px;
+
+    color: #4d5d78;
+}
+
+
+.location-icon {
+
+    font-size: 13px;
+
+    color: #162d59;
+}
+
+
+.trip-meta {
+
+    margin-top: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    color: #64728a;
+}
+
+
+.trip-meta b {
+
+    color: #a5afbd;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.trip-status {
+
+    align-self: center;
+}
+
+
+.upcoming-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    background: #e8f9eb;
+
+    color: #17823a;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+.save-trip {
+
+    height: 32px;
+
+    min-width: 120px;
+
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce3ed;
+
+    border-radius: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #172b55;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.save-trip:hover {
+
+    border-color: #2867d9;
+
+    color: #1260e8;
+}
+
+
+.save-trip.saved {
+
+    border-color: #b9e5c5;
+
+    background: #f0fbf3;
+
+    color: #17823a;
+}
+
+
+/* =====================================================
+   TABS
+===================================================== */
+
+.tabs {
+
+    height: 37px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3e8ef;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    align-items: stretch;
+
+    padding-left: 14px;
+
+    margin-bottom: 12px;
+}
+
+
+.tab {
+
+    height: 100%;
+
+    min-width: 82px;
+
+    padding: 0 11px;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom: 2px solid transparent;
+
+    color: #64728a;
+
+    font-size: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.tab:hover {
+
+    color: #1260e8;
+}
+
+
+.tab.active {
+
+    color: #1260e8;
+
+    border-bottom-color: #1260e8;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   TAB CONTENT
+===================================================== */
+
+.tab-content {
+
+    display: none;
+}
+
+
+.tab-content.active {
+
+    display: block;
+}
+
+
+/* =====================================================
+   MAIN TWO COLUMN LAYOUT
+===================================================== */
+
+.content-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        240px;
+
+    gap: 15px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+
+    margin-bottom: 9px;
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #172b55;
+}
+
+
+.section-heading p {
+
+    margin: 3px 0 0;
+
+    font-size: 9px;
+
+    color: #8490a3;
+}
+
+
+/* =====================================================
+   DAY CARD
+===================================================== */
+
+.day-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+
+    border-radius: 7px;
+
+    margin-bottom: 9px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1px 4px rgba(20, 50, 90, 0.025);
+}
+
+
+/* =====================================================
+   DAY HEADER
+===================================================== */
+
+.day-card-header {
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 22px;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+
+.day-number {
+
+    padding: 5px 9px;
+
+    border-radius: 4px;
+
+    background: #1260e8;
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.day-title {
+
+    flex: 1;
+}
+
+
+.day-title h3 {
+
+    margin: 0;
+
+    font-size: 10px;
+
+    color: #172b55;
+}
+
+
+.day-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 9px;
+
+    color: #5e6d84;
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.timeline {
+
+    padding: 4px 18px 7px;
+}
+
+
+.timeline-item {
+
+    min-height: 43px;
+
+    display: grid;
+
+    grid-template-columns:
+        64px
+        38px
+        1fr;
+
+    position: relative;
+}
+
+
+/* TIME */
+
+.time {
+
+    padding-top: 14px;
+
+    color: #1260e8;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* MIDDLE */
+
+.timeline-middle {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* vertical line */
+
+.timeline-middle::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+
+    background: #dce3ed;
+
+    top: 28px;
+
+    bottom: -13px;
+
+    left: 50%;
+}
+
+
+.timeline-item:last-child
+.timeline-middle::after {
+
+    display: none;
+}
+
+
+/* CIRCLE */
+
+.timeline-icon {
+
+    width: 27px;
+
+    height: 27px;
+
+    margin-top: 6px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: #ffffff;
+
+    border: 1px solid #dce4ee;
+
+    font-size: 10px;
+}
+
+
+/* icon colors */
+
+.timeline-icon.blue {
+
+    color: #1260e8;
+
+    background: #f1f6ff;
+
+    border-color: #c6d9ff;
+}
+
+
+.timeline-icon.orange {
+
+    color: #e67d00;
+
+    background: #fff8ed;
+
+    border-color: #f6d9ad;
+}
+
+
+.timeline-icon.green {
+
+    color: #1b963f;
+
+    background: #f1fff4;
+
+    border-color: #c4e8cc;
+}
+
+
+.timeline-icon.purple {
+
+    color: #8137d5;
+
+    background: #faf4ff;
+
+    border-color: #dec7f3;
+}
+
+
+/* ACTIVITY */
+
+.activity {
+
+    padding: 9px 0 5px 3px;
+}
+
+
+.activity h4 {
+
+    margin: 0 0 3px;
+
+    color: #243654;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+.activity p {
+
+    margin: 0;
+
+    color: #708097;
+
+    font-size: 8px;
+
+    line-height: 1.35;
+}
+
+
+/* =====================================================
+   FULL ITINERARY
+===================================================== */
+
+.full-itinerary-btn {
+
+    width: 100%;
+
+    height: 28px;
+
+    background: #ffffff;
+
+    border: none;
+
+    border-top: 1px solid #edf0f4;
+
+    color: #1260e8;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+
+.full-itinerary-btn:hover {
+
+    background: #f7faff;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.side-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+}
+
+
+.side-card h3 {
+
+    margin: 0;
+
+    padding: 10px 15px 7px;
+
+    font-size: 11px;
+
+    color: #172b55;
+}
+
+
+/* =====================================================
+   WEATHER
+===================================================== */
+
+.weather-main {
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.weather-graphic {
+
+    position: relative;
+
+    width: 57px;
+
+    height: 45px;
+}
+
+
+.sun {
+
+    position: absolute;
+
+    left: 4px;
+
+    top: 0;
+
+    color: #f7c62f;
+
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+
+.cloud {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 1px;
+
+    color: #c9d0d8;
+
+    font-size: 34px;
+
+    line-height: 1;
+}
+
+
+.temperature strong {
+
+    display: block;
+
+    color: #172b55;
+
+    font-size: 20px;
+}
+
+
+.temperature span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #728097;
+
+    font-size: 8px;
+}
+
+
+.weather-footer {
+
+    height: 31px;
+
+    border-top: 1px solid #edf0f4;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    text-align: center;
+
+    font-size: 8px;
+
+    color: #64728a;
+}
+
+
+.weather-footer span:first-child {
+
+    border-right: 1px solid #edf0f4;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary-item {
+
+    min-height: 27px;
+
+    padding: 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    font-size: 8px;
+
+    color: #68768d;
+}
+
+
+.summary-item strong {
+
+    color: #172b55;
+
+    font-size: 8px;
+
+    text-align: right;
+}
+
+
+.summary-item:last-child {
+
+    padding-bottom: 11px;
+}
+
+
+/* =====================================================
+   INTEREST TAGS
+===================================================== */
+
+.interest-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    padding: 0 15px 12px;
+}
+
+
+.tag {
+
+    padding: 5px 10px;
+
+    border-radius: 12px;
+
+    font-size: 8px;
+
+    font-weight: 500;
+}
+
+
+.tag.nature {
+
+    background: #e7f8e9;
+
+    color: #16823a;
+}
+
+
+.tag.food {
+
+    background: #fff1d9;
+
+    color: #a96700;
+}
+
+
+.tag.adventure {
+
+    background: #e7f0ff;
+
+    color: #1554c0;
+}
+
+
+.tag.history {
+
+    background: #f0e7ff;
+
+    color: #7135bf;
+}
+
+
+.tag.shopping {
+
+    background: #ffe7f2;
+
+    color: #c02870;
+}
+
+
+.tag.nightlife {
+
+    background: #eee5ff;
+
+    color: #6935bd;
+}
+
+
+/* =====================================================
+   TIPS
+===================================================== */
+
+.tips-card {
+
+    padding-bottom: 7px;
+}
+
+
+.tip {
+
+    padding: 0 15px;
+
+    margin: 7px 0;
+
+    font-size: 8px;
+
+    color: #53627b;
+}
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+.placeholder {
+
+    min-height: 350px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.placeholder-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+
+.placeholder h2 {
+
+    margin: 0 0 6px;
+
+    font-size: 18px;
+}
+
+
+.placeholder p {
+
+    margin: 0 0 6px;
+
+    color: #718098;
+
+    font-size: 11px;
+}
+
+
+.placeholder span {
+
+    color: #9aa4b2;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   BUDGET
+===================================================== */
+
+.budget-page {
+
+    background: #ffffff;
+
+    border: 1px solid #e1e7ef;
+
+    border-radius: 8px;
+
+    padding: 25px;
+}
+
+
+.budget-page h2 {
+
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+.budget-page > p {
+
+    margin: 6px 0 20px;
+
+    color: #718098;
+
+    font-size: 11px;
+}
+
+
+.budget-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.budget-box {
+
+    background: #f7f9fc;
+
+    border-radius: 7px;
+
+    padding: 20px;
+}
+
+
+.budget-box span {
+
+    display: block;
+
+    color: #718098;
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+}
+
+
+.budget-box strong {
+
+    font-size: 18px;
+
+    color: #172b55;
+}
+
+
+.green-text {
+
+    color: #16823a !important;
+}
+
+
+/* =====================================================
+   BOTTOM ACTIONS
+===================================================== */
+
+.bottom-actions {
+
+    height: 48px;
+
+    margin-top: 10px;
+
+    border-top: 1px solid #e7ebf1;
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    padding-top: 10px;
+}
+
+
+.edit-btn {
+
+    height: 30px;
+
+    padding: 0 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    background: #ffffff;
+
+    border: 1px solid #dce3ed;
+
+    border-radius: 5px;
+
+    color: #263754;
+
+    font-size: 9px;
+}
+
+
+.edit-btn:hover {
+
+    border-color: #2867d9;
+
+    color: #1260e8;
+}
+
+
+.dashboard-btn {
+
+    height: 32px;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #1260e8;
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.dashboard-btn:hover {
+
+    background: #0b50c9;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .page-container {
+
+        width: 94%;
+    }
+
+
+    .content-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .sidebar {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .trip-status {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .top-header {
+
+        padding: 0 18px;
+    }
+
+
+    .page-container {
+
+        width: 94%;
+    }
+
+
+    .trip-header {
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+    }
+
+
+    .trip-photo {
+
+        width: 100%;
+
+        height: 150px;
+    }
+
+
+    .trip-info {
+
+        width: 100%;
+    }
+
+
+    .save-trip {
+
+        width: 100%;
+    }
+
+
+    .tabs {
+
+        overflow-x: auto;
+    }
+
+
+    .sidebar {
+
+        display: flex;
+    }
+
+
+    .day-card-header {
+
+        padding: 0 12px;
+    }
+
+
+    .day-date {
+
+        display: none;
+    }
+
+
+    .timeline {
+
+        padding-left: 8px;
+
+        padding-right: 8px;
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns:
+            58px
+            35px
+            1fr;
+    }
+
+
+    .budget-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =====================================================
+   FULL ITINERARY EXPANSION
+===================================================== */
+
+.extra-days {
+    display: none;
+}
+
+.extra-days.show {
+    display: block;
+}
+
+
+/* Expand button */
+
+.full-itinerary-btn {
+    width: 100%;
+    height: 34px;
+
+    border: 1px solid #dce5f2;
+    border-radius: 0 0 7px 7px;
+
+    background: #ffffff;
+
+    color: #1260e8;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: all 0.2s ease;
+}
+
+
+.full-itinerary-btn:hover {
+    background: #f4f8ff;
+
+    color: #084fc4;
+}
+
+
+#expandIcon {
+    font-size: 15px;
+
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* =====================================================
+   EXTRA DAYS ANIMATION
+===================================================== */
+
+.extra-days.show .day-card {
+    animation: showDay 0.3s ease;
+}
+
+
+@keyframes showDay {
+
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
