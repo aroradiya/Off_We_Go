@@ -1,6 +1,6 @@
 # ✈️ Off We Go
 
-> **Plan your journey. Manage your trip. Go anywhere.**
+> **Every Mile, Every Moment.**
 
 **Off We Go** is a full-stack travel planning and management web application developed as a **Backend Engineering (BEE) project**.
 
