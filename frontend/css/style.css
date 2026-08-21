@@ -78,26 +78,54 @@ body {
     gap: 12px;
 }
 
-.nav-buttons button {
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.login-btn,
+.signup-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 10px 20px;
     border-radius: 8px;
+
     font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+
+    text-decoration: none;
     cursor: pointer;
+
+    transition: 0.3s ease;
 }
 
+/* LOGIN */
 .login-btn {
-    border: 1px solid #d1d5db;
     background-color: white;
     color: #172033;
+    border: 1px solid #d1d5db;
 }
 
+.login-btn:hover {
+    background-color: #f1f5f9;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+/* SIGN UP */
 .signup-btn {
-    border: none;
-    background-color: #172033;
+    background-color: #2563eb;
     color: white;
+    border: 1px solid #2563eb;
 }
 
-
+.signup-btn:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
 /* =========================
    HERO
 ========================= */
