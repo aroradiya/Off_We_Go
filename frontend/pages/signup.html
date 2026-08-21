@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OffWeGo | Login</title>
+    <title>OffWeGo | Sign Up</title>
 
     <link rel="stylesheet" href="../css/auth.css">
-    
 </head>
 
 <body>
@@ -27,7 +27,7 @@
     </header>
 
 
-    <!-- ================= LOGIN SECTION ================= -->
+    <!-- ================= SIGN UP SECTION ================= -->
     <main class="login-page">
 
         <div class="login-card">
@@ -35,20 +35,16 @@
             <!-- LEFT SIDE -->
             <section class="welcome-section">
 
-                <!-- <span class="small-heading">
-                    
-                </span> -->
-
                 <h1>
-                    Ready to<br>
-                    <span>go places?</span>
+                    Start your<br>
+                    <span>journey here.</span>
                 </h1>
 
                 <p>
-                    Your next adventure is waiting.
-                    Log in to continue planning smarter,
-                    discovering new destinations, and
-                    creating unforgettable trips.
+                    Create your OffWeGo account and start
+                    planning smarter, discovering new
+                    destinations, and creating unforgettable
+                    trips.
                 </p>
 
 
@@ -89,14 +85,32 @@
 
                 <div class="form-container">
 
-                    <h2>Welcome back</h2>
+                    <h2>Create your account</h2>
 
                     <p class="form-subtitle">
-                        Sign in to continue your journey.
+                        Start planning your next journey with OffWeGo.
                     </p>
 
 
-                    <form id="loginForm">
+                    <form id="registerForm">
+
+                        <!-- FULL NAME -->
+                        <div class="input-group">
+
+                            <label for="name">
+                                Full name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
 
                         <!-- EMAIL -->
                         <div class="input-group">
@@ -117,51 +131,47 @@
 
 
                         <!-- PASSWORD -->
-                        <div class="input-group password-group">
+                        <div class="input-group">
 
-                            <div class="password-label">
-
-                                <label for="password">
-                                    Password
-                                </label>
-
-                                <a href="#" class="forgot">
-                                    Forgot password?
-                                </a>
-
-                            </div>
+                            <label for="password">
+                                Password
+                            </label>
 
                             <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                autocomplete="current-password"
+                                autocomplete="new-password"
                                 required
                             >
 
                         </div>
 
 
-                        <!-- REMEMBER -->
-                        <div class="remember-row">
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="input-group">
 
-                            <label class="remember">
-                                <input
-                                    type="checkbox"
-                                    id="remember"
-                                >
-                                <span>Remember me</span>
+                            <label for="confirmPassword">
+                                Confirm password
                             </label>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                autocomplete="new-password"
+                                required
+                            >
 
                         </div>
 
 
-                        <!-- LOGIN BUTTON -->
+                        <!-- SIGN UP BUTTON -->
                         <button
                             type="submit"
                             class="login-btn"
                         >
-                            <span>Log in</span>
+                            <span>Create account</span>
                             <span class="arrow">→</span>
                         </button>
 
@@ -172,11 +182,11 @@
                         </div>
 
 
-                        <!-- REGISTER -->
+                        <!-- LOGIN -->
                         <p class="register-text">
-                            Don't have an account ?
-                            <a href="signup.html">
-                                Create one
+                            Already have an account?
+                            <a href="login.html">
+                                Log in
                             </a>
                         </p>
 
@@ -195,3 +205,4 @@
 
 </body>
 </html>
+

@@ -655,3 +655,18 @@ body {
         padding: 40px 25px;
     }
 }
+/* =========================================
+   SIGN UP PAGE
+   ========================================= */
+
+#registerForm .input-group {
+    margin-bottom: 18px;
+}
+
+#registerForm .form-subtitle {
+    margin-bottom: 28px;
+}
+
+#registerForm .login-btn {
+    margin-top: 3px;
+}
