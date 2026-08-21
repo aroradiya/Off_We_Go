@@ -11,7 +11,7 @@ if (newTripBtn) {
 
     newTripBtn.addEventListener("click", function () {
 
-        window.location.href = "create-trip.html";
+        window.location.href = "trip.html";
 
     });
 

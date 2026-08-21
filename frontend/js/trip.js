@@ -1,248 +1,969 @@
-// =====================================================
-// OFFWEGO - PLAN TRIP JAVASCRIPT
-// =====================================================
+document.addEventListener("DOMContentLoaded", function () {
 
 
-// =====================================================
-// DESTINATION SELECTION
-// =====================================================
+    /* =========================================
+       STEP NAVIGATION
+    ========================================== */
 
-const destinationInput =
-    document.getElementById("destination");
+    const stepButtons =
+        document.querySelectorAll(".step-button");
 
-const destinationCards =
-    document.querySelectorAll(".destination-card");
+    const sections = [
+        "destination-section",
+        "dates-section",
+        "travellers-section",
+        "preferences-section"
+    ];
 
 
-destinationCards.forEach(function (card) {
+    function scrollToSection(sectionId) {
 
-    card.addEventListener("click", function () {
+        const section =
+            document.getElementById(sectionId);
 
-        // Remove selection from all cards
+        if (!section) {
+            return;
+        }
 
-        destinationCards.forEach(function (item) {
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
-            item.classList.remove("selected");
+    }
+
+
+    function updateSteps(currentSection) {
+
+        const currentIndex =
+            sections.indexOf(currentSection);
+
+
+        stepButtons.forEach(function (button) {
+
+            const buttonStep =
+                Number(button.dataset.step);
+
+            button.classList.remove("active");
+            button.classList.remove("completed");
+
+
+            if (buttonStep - 1 < currentIndex) {
+
+                button.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            if (buttonStep - 1 === currentIndex) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
 
         });
 
-
-        // Select clicked card
-
-        card.classList.add("selected");
+    }
 
 
-        // Put destination in input
+    stepButtons.forEach(function (button) {
 
-        destinationInput.value =
-            card.dataset.destination;
+        button.addEventListener(
+            "click",
+            function () {
+
+                const target =
+                    button.dataset.target;
+
+                scrollToSection(target);
+
+                updateSteps(target);
+
+            }
+        );
 
     });
 
-});
 
+    /* =========================================
+       NEXT BUTTONS
+    ========================================== */
 
-// =====================================================
-// NUMBER OF TRAVELLERS
-// =====================================================
-
-let people = 2;
-
-
-const peopleCount =
-    document.getElementById("peopleCount");
-
-
-const increasePeople =
-    document.getElementById("increasePeople");
-
-
-const decreasePeople =
-    document.getElementById("decreasePeople");
-
-
-increasePeople.addEventListener("click", function () {
-
-    if (people < 20) {
-
-        people++;
-
-        peopleCount.textContent = people;
-
-    }
-
-});
-
-
-decreasePeople.addEventListener("click", function () {
-
-    if (people > 1) {
-
-        people--;
-
-        peopleCount.textContent = people;
-
-    }
-
-});
-
-
-// =====================================================
-// DATE VALIDATION
-// =====================================================
-
-const startDate =
-    document.getElementById("startDate");
-
-const endDate =
-    document.getElementById("endDate");
-
-
-startDate.addEventListener("change", function () {
-
-    endDate.min = startDate.value;
-
-});
-
-
-// =====================================================
-// FORM SUBMISSION
-// =====================================================
-
-const tripForm =
-    document.getElementById("tripForm");
-
-
-tripForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-
-    // -----------------------------------------
-    // Get values
-    // -----------------------------------------
-
-    const destination =
-        destinationInput.value.trim();
-
-
-    const start =
-        startDate.value;
-
-
-    const end =
-        endDate.value;
-
-
-    const budget =
-        document.getElementById("budget").value;
-
-
-    const interests =
-        Array.from(
-            document.querySelectorAll(
-                'input[name="interest"]:checked'
-            )
-        ).map(function (item) {
-
-            return item.value;
-
-        });
-
-
-    const travelStyle =
-        document.querySelector(
-            'input[name="travelStyle"]:checked'
+    const nextButtons =
+        document.querySelectorAll(
+            ".next-button"
         );
 
 
-    // -----------------------------------------
-    // Validation
-    // -----------------------------------------
+    nextButtons.forEach(function (button) {
 
-    if (!destination) {
+        button.addEventListener(
+            "click",
+            function () {
 
-        alert("Please select a destination.");
+                const target =
+                    button.dataset.next;
 
-        return;
+
+                if (
+                    target ===
+                    "dates-section"
+                ) {
+
+                    if (!validateDestination()) {
+                        return;
+                    }
+
+                }
+
+
+                if (
+                    target ===
+                    "travellers-section"
+                ) {
+
+                    if (!validateDates()) {
+                        return;
+                    }
+
+                }
+
+
+                scrollToSection(target);
+
+                updateSteps(target);
+
+                updateReview();
+
+            }
+        );
+
+    });
+
+
+    /* =========================================
+       BACK BUTTONS
+    ========================================== */
+
+    const backButtons =
+        document.querySelectorAll(
+            ".back-button"
+        );
+
+
+    backButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const target =
+                    button.dataset.back;
+
+                scrollToSection(target);
+
+                updateSteps(target);
+
+            }
+        );
+
+    });
+
+
+    /* =========================================
+       DESTINATION
+    ========================================== */
+
+    const destinationCards =
+        document.querySelectorAll(
+            ".destination-card"
+        );
+
+
+    const selectedDestination =
+        document.getElementById(
+            "selectedDestination"
+        );
+
+
+    const destinationSearch =
+        document.getElementById(
+            "destinationSearch"
+        );
+
+
+    let destination = "";
+
+
+    destinationCards.forEach(function (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                destination =
+                    card.dataset.destination;
+
+
+                destinationCards.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    }
+                );
+
+
+                card.classList.add(
+                    "selected"
+                );
+
+
+                selectedDestination.textContent =
+                    destination;
+
+
+                destinationSearch.value =
+                    destination;
+
+            }
+        );
+
+    });
+
+
+    function validateDestination() {
+
+        if (destination === "") {
+
+            alert(
+                "Please select a destination first."
+            );
+
+            scrollToSection(
+                "destination-section"
+            );
+
+            updateSteps(
+                "destination-section"
+            );
+
+            return false;
+        }
+
+
+        return true;
 
     }
 
 
-    if (!start || !end) {
+    /* =========================================
+       DESTINATION SEARCH
+    ========================================== */
 
-        alert("Please select your travel dates.");
-
-        return;
-
-    }
-
-
-    if (new Date(end) < new Date(start)) {
-
-        alert("End date cannot be before start date.");
-
-        return;
-
-    }
+    const destinations = [
+        "Manali",
+        "Goa",
+        "Dubai",
+        "Paris",
+        "Bali",
+        "Kerala",
+        "Jaipur",
+        "London"
+    ];
 
 
-    if (!budget || budget <= 0) {
-
-        alert("Please enter your budget.");
-
-        return;
-
-    }
+    const suggestions =
+        document.getElementById(
+            "destinationSuggestions"
+        );
 
 
-    if (!travelStyle) {
+    destinationSearch.addEventListener(
+        "input",
+        function () {
 
-        alert("Please select your travel style.");
-
-        return;
-
-    }
-
-
-    // -----------------------------------------
-    // Create trip object
-    // -----------------------------------------
-
-    const trip = {
-
-        destination: destination,
-
-        startDate: start,
-
-        endDate: end,
-
-        people: people,
-
-        budget: Number(budget),
-
-        interests: interests,
-
-        travelStyle: travelStyle.value
-
-    };
+            const value =
+                destinationSearch.value
+                    .trim()
+                    .toLowerCase();
 
 
-    // -----------------------------------------
-    // Save temporarily
-    // -----------------------------------------
+            suggestions.innerHTML = "";
 
-    localStorage.setItem(
-        "offwegoCurrentTrip",
-        JSON.stringify(trip)
+
+            if (value === "") {
+                return;
+            }
+
+
+            const matches =
+                destinations.filter(
+                    function (item) {
+
+                        return item
+                            .toLowerCase()
+                            .includes(value);
+
+                    }
+                );
+
+
+            matches.forEach(
+                function (item) {
+
+                    const suggestion =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    suggestion.type =
+                        "button";
+
+
+                    suggestion.className =
+                        "suggestion-item";
+
+
+                    suggestion.textContent =
+                        item;
+
+
+                    suggestion.style.display =
+                        "block";
+
+                    suggestion.style.width =
+                        "100%";
+
+                    suggestion.style.textAlign =
+                        "left";
+
+                    suggestion.style.padding =
+                        "12px 15px";
+
+                    suggestion.style.border =
+                        "1px solid #dce4ef";
+
+                    suggestion.style.background =
+                        "#ffffff";
+
+                    suggestion.style.cursor =
+                        "pointer";
+
+
+                    suggestion.addEventListener(
+                        "click",
+                        function () {
+
+                            destination =
+                                item;
+
+                            destinationSearch.value =
+                                item;
+
+                            selectedDestination.textContent =
+                                item;
+
+                            suggestions.innerHTML =
+                                "";
+
+                        }
+                    );
+
+
+                    suggestions.appendChild(
+                        suggestion
+                    );
+
+                }
+            );
+
+        }
     );
 
 
-    // -----------------------------------------
-    // Go to itinerary
-    // -----------------------------------------
+    /* =========================================
+       DATES
+    ========================================== */
 
-    window.location.href =
-        "itinerary.html";
+    const startDate =
+        document.getElementById(
+            "startDate"
+        );
+
+
+    const endDate =
+        document.getElementById(
+            "endDate"
+        );
+
+
+    const dateMessage =
+        document.getElementById(
+            "dateMessage"
+        );
+
+
+    function validateDates() {
+
+        if (
+            startDate.value === "" ||
+            endDate.value === ""
+        ) {
+
+            dateMessage.textContent =
+                "Please select both start and end dates.";
+
+            scrollToSection(
+                "dates-section"
+            );
+
+            updateSteps(
+                "dates-section"
+            );
+
+            return false;
+
+        }
+
+
+        const start =
+            new Date(
+                startDate.value
+            );
+
+
+        const end =
+            new Date(
+                endDate.value
+            );
+
+
+        if (end < start) {
+
+            dateMessage.textContent =
+                "End date cannot be before start date.";
+
+            return false;
+
+        }
+
+
+        dateMessage.textContent = "";
+
+        return true;
+
+    }
+
+
+    startDate.addEventListener(
+        "change",
+        function () {
+
+            if (
+                endDate.value &&
+                endDate.value < startDate.value
+            ) {
+
+                endDate.value =
+                    startDate.value;
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       TRAVELLERS
+    ========================================== */
+
+    const adultMinus =
+        document.getElementById(
+            "adultMinus"
+        );
+
+
+    const adultPlus =
+        document.getElementById(
+            "adultPlus"
+        );
+
+
+    const childMinus =
+        document.getElementById(
+            "childMinus"
+        );
+
+
+    const childPlus =
+        document.getElementById(
+            "childPlus"
+        );
+
+
+    const adultCount =
+        document.getElementById(
+            "adultCount"
+        );
+
+
+    const childCount =
+        document.getElementById(
+            "childCount"
+        );
+
+
+    const totalTravellers =
+        document.getElementById(
+            "totalTravellers"
+        );
+
+
+    let adults = 1;
+
+    let children = 0;
+
+
+    function updateTravellerCount() {
+
+        adultCount.textContent =
+            adults;
+
+        childCount.textContent =
+            children;
+
+        totalTravellers.textContent =
+            adults + children;
+
+    }
+
+
+    adultPlus.addEventListener(
+        "click",
+        function () {
+
+            adults++;
+
+            updateTravellerCount();
+
+            updateReview();
+
+        }
+    );
+
+
+    adultMinus.addEventListener(
+        "click",
+        function () {
+
+            if (adults > 1) {
+
+                adults--;
+
+                updateTravellerCount();
+
+                updateReview();
+
+            }
+
+        }
+    );
+
+
+    childPlus.addEventListener(
+        "click",
+        function () {
+
+            children++;
+
+            updateTravellerCount();
+
+            updateReview();
+
+        }
+    );
+
+
+    childMinus.addEventListener(
+        "click",
+        function () {
+
+            if (children > 0) {
+
+                children--;
+
+                updateTravellerCount();
+
+                updateReview();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       INTERESTS
+    ========================================== */
+
+    const interestButtons =
+        document.querySelectorAll(
+            ".interest-button"
+        );
+
+
+    let selectedInterests = [];
+
+
+    interestButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const interest =
+                        button.dataset.interest;
+
+
+                    if (
+                        selectedInterests.includes(
+                            interest
+                        )
+                    ) {
+
+                        selectedInterests =
+                            selectedInterests.filter(
+                                function (item) {
+
+                                    return item !==
+                                        interest;
+
+                                }
+                            );
+
+
+                        button.classList.remove(
+                            "selected"
+                        );
+
+                    } else {
+
+                        selectedInterests.push(
+                            interest
+                        );
+
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                    }
+
+
+                    updateReview();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================
+       BUDGET
+    ========================================== */
+
+    const budget =
+        document.getElementById(
+            "budget"
+        );
+
+
+    budget.addEventListener(
+        "change",
+        updateReview
+    );
+
+
+    /* =========================================
+       REVIEW
+    ========================================== */
+
+    function formatDates() {
+
+        if (
+            startDate.value === "" ||
+            endDate.value === ""
+        ) {
+
+            return "-";
+
+        }
+
+
+        const start =
+            new Date(
+                startDate.value
+            );
+
+
+        const end =
+            new Date(
+                endDate.value
+            );
+
+
+        return (
+            start.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            )
+            +
+            " - "
+            +
+            end.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            )
+        );
+
+    }
+
+
+    function updateReview() {
+
+        const reviewDestination =
+            document.getElementById(
+                "reviewDestination"
+            );
+
+
+        const reviewDates =
+            document.getElementById(
+                "reviewDates"
+            );
+
+
+        const reviewTravellers =
+            document.getElementById(
+                "reviewTravellers"
+            );
+
+
+        const reviewBudget =
+            document.getElementById(
+                "reviewBudget"
+            );
+
+
+        const reviewInterests =
+            document.getElementById(
+                "reviewInterests"
+            );
+
+
+        reviewDestination.textContent =
+            destination || "-";
+
+
+        reviewDates.textContent =
+            formatDates();
+
+
+        reviewTravellers.textContent =
+            adults + children;
+
+
+        reviewBudget.textContent =
+            budget.value || "-";
+
+
+        reviewInterests.textContent =
+            selectedInterests.length > 0
+                ? selectedInterests.join(
+                    ", "
+                )
+                : "None";
+
+    }
+
+
+    /* =========================================
+       CREATE TRIP
+    ========================================== */
+
+    const createTripButton =
+        document.getElementById(
+            "createTripButton"
+        );
+
+
+    createTripButton.addEventListener(
+        "click",
+        function () {
+
+
+            if (!validateDestination()) {
+                return;
+            }
+
+
+            if (!validateDates()) {
+                return;
+            }
+
+
+            if (!budget.value) {
+
+                alert(
+                    "Please select your budget."
+                );
+
+                scrollToSection(
+                    "preferences-section"
+                );
+
+                return;
+
+            }
+
+
+            const tripData = {
+
+                destination:
+                    destination,
+
+                startDate:
+                    startDate.value,
+
+                endDate:
+                    endDate.value,
+
+                adults:
+                    adults,
+
+                children:
+                    children,
+
+                totalTravellers:
+                    adults + children,
+
+                budget:
+                    budget.value,
+
+                interests:
+                    selectedInterests,
+
+                notes:
+                    document.getElementById(
+                        "notes"
+                    ).value
+
+            };
+
+
+            /* Save trip */
+
+            localStorage.setItem(
+                "offwegoCurrentTrip",
+                JSON.stringify(
+                    tripData
+                )
+            );
+
+
+            alert(
+                "Your trip has been created successfully! ✈"
+            );
+
+
+            /*
+                For now go back to dashboard.
+
+                Later we can change this to:
+                itinerary.html
+            */
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+    );
+
+
+    /* =========================================
+       SCROLL-BASED ACTIVE STEP
+    ========================================== */
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            updateSteps(
+                                entry.target.id
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+    sections.forEach(
+        function (sectionId) {
+
+            const section =
+                document.getElementById(
+                    sectionId
+                );
+
+
+            if (section) {
+
+                observer.observe(
+                    section
+                );
+
+            }
+
+        }
+    );
+
+
+    /* Initial state */
+
+    updateTravellerCount();
+
+    updateReview();
 
 });

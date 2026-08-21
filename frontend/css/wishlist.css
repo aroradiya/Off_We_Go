@@ -1,0 +1,654 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f8fc;
+    color: #082653;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 310px;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e1e7f0;
+
+    padding: 28px 24px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    color: #000000;
+
+    padding: 0 16px 48px;
+}
+
+.logo-plane {
+    color: #2867d9;
+
+    display: inline-block;
+
+    transform: rotate(-45deg);
+
+    transform-origin: center;
+}
+
+
+/* =========================================
+   SIDEBAR NAVIGATION
+========================================= */
+
+.sidebar-nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.sidebar-nav a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 15px 20px;
+
+    min-height: 52px;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    color: #536987;
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background: #f2f6fc;
+
+    color: #124c9c;
+}
+
+.sidebar-nav a.active {
+    background: #eaf1ff;
+
+    color: #124c9c;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.main-content {
+    margin-left: 310px;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   TOP HEADER
+========================================= */
+
+.top-header {
+    height: 72px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e1e7f0;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    padding: 0 38px;
+}
+
+
+/* =========================================
+   LOGIN / SIGN UP
+========================================= */
+
+.auth-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    padding: 9px 17px;
+
+    border-radius: 7px;
+
+    transition: 0.2s ease;
+}
+
+.login-btn {
+    color: #173b70;
+
+    background: transparent;
+
+    border: 1px solid #dce4ef;
+}
+
+.login-btn:hover {
+    background: #f3f6fb;
+}
+
+.signup-btn {
+    color: #ffffff;
+
+    background: #16458a;
+
+    border: 1px solid #16458a;
+}
+
+.signup-btn:hover {
+    background: #0e376f;
+}
+
+
+/* =========================================
+   WISHLIST PAGE
+========================================= */
+
+.wishlist-page {
+    padding: 48px 55px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 38px;
+}
+
+.page-header h1 {
+    font-size: 36px;
+
+    font-weight: 700;
+
+    color: #082653;
+
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 17px;
+
+    color: #718096;
+}
+
+
+/* =========================================
+   BACK TO DASHBOARD
+========================================= */
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #ffffff;
+
+    border: 1px solid #dce4ef;
+
+    padding: 12px 18px;
+
+    border-radius: 9px;
+
+    color: #173b70;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    background: #f5f8fd;
+}
+
+
+/* =========================================
+   WISHLIST GRID
+========================================= */
+
+.wishlist-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(270px, 1fr)
+        );
+
+    gap: 24px;
+}
+
+
+/* =========================================
+   WISHLIST CARD
+========================================= */
+
+.wishlist-card {
+    background: #ffffff;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    border: 1px solid #e1e7f0;
+
+    box-shadow:
+        0 6px 18px rgba(
+            20,
+            50,
+            90,
+            0.06
+        );
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(
+            20,
+            50,
+            90,
+            0.11
+        );
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.wishlist-image {
+    height: 190px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.wishlist-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================================
+   REMOVE BUTTON
+========================================= */
+
+.remove-wishlist {
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #e53935;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 9px rgba(
+            0,
+            0,
+            0,
+            0.12
+        );
+
+    transition: 0.2s ease;
+}
+
+.remove-wishlist:hover {
+    background: #fff1f1;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   CARD INFORMATION
+========================================= */
+
+.wishlist-info {
+    padding: 19px;
+}
+
+.wishlist-info h3 {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+    color: #082653;
+}
+
+.wishlist-info p {
+    color: #718096;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CARD BOTTOM
+========================================= */
+
+.wishlist-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 17px;
+}
+
+.wishlist-price {
+    color: #079447;
+
+    font-weight: 700;
+
+    font-size: 17px;
+}
+
+.view-trip {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #125de8;
+
+    color: #ffffff;
+
+    padding: 9px 13px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.view-trip:hover {
+    background: #0d4fc9;
+}
+
+
+/* =========================================
+   EMPTY WISHLIST
+========================================= */
+
+.empty-wishlist {
+    text-align: center;
+
+    padding: 80px 20px;
+}
+
+.empty-icon {
+    width: 76px;
+
+    height: 76px;
+
+    margin: 0 auto 22px;
+
+    border-radius: 50%;
+
+    background: #eaf1ff;
+
+    color: #2867d9;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 38px;
+}
+
+.empty-wishlist h2 {
+    font-size: 25px;
+
+    font-weight: 700;
+
+    color: #082653;
+
+    margin-bottom: 9px;
+}
+
+.empty-wishlist p {
+    color: #718096;
+
+    font-size: 16px;
+
+    margin-bottom: 23px;
+}
+
+
+/* =========================================
+   EXPLORE BUTTON
+========================================= */
+
+.explore-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #125de8;
+
+    color: #ffffff;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+.explore-button:hover {
+    background: #0d4fc9;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 260px;
+    }
+
+    .main-content {
+        margin-left: 260px;
+    }
+
+    .sidebar-nav a {
+        font-size: 15px;
+
+        padding: 14px 17px;
+    }
+
+    .wishlist-page {
+        padding: 40px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 220px;
+
+        padding: 25px 15px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+
+    .logo {
+        font-size: 23px;
+
+        padding-left: 10px;
+    }
+
+    .sidebar-nav a {
+        gap: 14px;
+
+        font-size: 14px;
+
+        padding: 13px;
+    }
+
+    .wishlist-page {
+        padding: 30px;
+    }
+
+    .page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .wishlist-page {
+        padding: 24px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .top-header {
+        padding: 0 20px;
+    }
+}

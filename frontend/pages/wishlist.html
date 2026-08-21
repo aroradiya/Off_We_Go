@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wishlist - OffWeGo</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/wishlist.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            OffWeGo
+            <span class="logo-plane">✈</span>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                ▦
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="trip.html">
+                ▣
+                <span>My Trips</span>
+            </a>
+
+
+            <a
+                href="wishlist.html"
+                class="active"
+            >
+                ♡
+                <span>Wishlist</span>
+            </a>
+
+
+            <a href="#">
+                ▤
+                <span>Bookings</span>
+            </a>
+
+
+            <a href="#">
+                ◎
+                <span>Travel Assistant</span>
+            </a>
+
+
+            <a href="#">
+                ♙
+                <span>Profile</span>
+            </a>
+
+
+            <a href="#">
+                ⚙
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main class="main-content">
+
+
+                <!-- HEADER -->
+        <header class="top-header">
+
+            <div class="auth-buttons">
+
+                <a href="dashboard.html" class="dashboard-link">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </header>
+
+        <!-- PAGE -->
+
+        <section class="wishlist-page">
+
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>
+                        My Wishlist
+                    </h1>
+
+                    <p>
+                        Save the destinations you want
+                        to explore later.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="dashboard.html"
+                    class="back-button"
+                >
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+
+            <!-- ==============================
+                 WISHLIST CARDS
+            =============================== -->
+
+            <div
+                id="wishlistContainer"
+                class="wishlist-grid"
+            >
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyWishlist"
+                class="empty-wishlist"
+            >
+
+                <div class="empty-icon">
+                    ♡
+                </div>
+
+                <h2>
+                    Your wishlist is empty
+                </h2>
+
+                <p>
+                    Start saving destinations that
+                    you would like to visit.
+                </p>
+
+                <a
+                    href="dashboard.html"
+                    class="explore-button"
+                >
+                    Explore Destinations
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/wishlist.js"></script>
+
+</body>
+
+</html>

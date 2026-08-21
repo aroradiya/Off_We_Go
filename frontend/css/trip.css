@@ -1,188 +1,243 @@
-/* =====================================================
-   OFFWEGO - PLAN TRIP
-===================================================== */
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    background: #f5f8fc;
 
-    background: #f8fafc;
+    color: #082653;
 
-    color: #15264a;
+    min-height: 100vh;
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* =========================================
+   TOP BAR
+========================================= */
 
-.trip-header {
-    height: 72px;
-
-    padding: 0 60px;
+.topbar {
+    height: 76px;
 
     background: #ffffff;
 
-    border-bottom: 1px solid #e8edf4;
+    border-bottom: 1px solid #e1e7f0;
 
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
+
+    padding: 0 55px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
 }
 
 
-/* LOGO */
+/* =========================================
+   LOGO
+========================================= */
 
 .logo {
-    position: relative;
-
     display: flex;
 
     align-items: center;
 
-    gap: 6px;
+    gap: 7px;
 
     text-decoration: none;
+}
 
-    font-size: 22px;
+
+.logo-text {
+    font-size: 27px;
 
     font-weight: 700;
 
-    color: #000000 !important;
+    color: #000000;
 }
 
-.logo-text {
-    color: #000000 !important;
-
-    position: relative;
-
-    z-index: 2;
-}
 
 .logo-plane {
-    color: #2867d9 !important;
-
-    position: relative;
-
-    z-index: 1;
-
-    font-size: 17px;
-}
-.logo-plane {
-    color: #2867d9;
     display: inline-block;
+
+    color: #2867d9;
+
+    font-size: 27px;
+
     transform: rotate(-45deg);
-    font-size: 24px;
 }
 
 
-/* BACK */
+/* =========================================
+   AUTH BUTTONS
+========================================= */
 
-.back-dashboard {
+.topbar-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.topbar-right a {
     text-decoration: none;
-
-    color: #18294b;
 
     font-size: 14px;
 
-    font-weight: 500;
+    font-weight: 600;
+
+    padding: 9px 17px;
+
+    border-radius: 7px;
 }
 
-.back-dashboard:hover {
-    color: #2867d9;
+
+.login-btn {
+    color: #173b70;
+
+    background: #ffffff;
+
+    border: 1px solid #dce4ef;
 }
 
 
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
+.login-btn:hover {
+    background: #f3f6fb;
+}
 
-.trip-container {
-    width: min(1050px, 92%);
+
+.signup-btn {
+    color: #ffffff;
+
+    background: #16458a;
+
+    border: 1px solid #16458a;
+}
+
+
+.signup-btn:hover {
+    background: #0e376f;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.trip-page {
+    width: min(1200px, 92%);
 
     margin: 0 auto;
 
-    padding: 40px 0 60px;
+    padding: 45px 0 80px;
 }
 
 
-/* =====================================================
-   TITLE
-===================================================== */
+/* =========================================
+   PAGE HEADING
+========================================= */
 
-.page-title {
+.page-heading {
     text-align: center;
 
-    margin-bottom: 35px;
-}
-
-.page-title h1 {
-    margin: 0 0 8px;
-
-    font-size: 32px;
-
-    color: #172b55;
-}
-
-.page-title p {
-    margin: 0;
-
-    color: #68758c;
-
-    font-size: 15px;
+    margin-bottom: 45px;
 }
 
 
-/* =====================================================
-   PROGRESS
-===================================================== */
+.page-heading h1 {
+    font-size: 38px;
 
-.progress {
+    color: #082653;
+
+    margin-bottom: 10px;
+}
+
+
+.page-heading p {
+    font-size: 19px;
+
+    color: #718096;
+}
+
+
+/* =========================================
+   STEPS
+========================================= */
+
+.steps-container {
     display: flex;
 
     align-items: flex-start;
 
     justify-content: center;
 
-    margin-bottom: 35px;
+    width: 100%;
+
+    margin-bottom: 55px;
 }
 
-.progress-item {
+
+.step-wrapper {
+    width: 180px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.step-button {
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 12px;
 
-    color: #68758c;
+    font-family: inherit;
 
-    font-size: 13px;
-
-    min-width: 95px;
+    color: #536987;
 }
 
-.progress-circle {
-    width: 38px;
 
-    height: 38px;
+.step-number {
+    width: 56px;
+
+    height: 56px;
 
     border-radius: 50%;
 
-    background: #e6ebf3;
+    background: #e7edf6;
 
-    color: #394963;
+    color: #344563;
 
     display: flex;
 
@@ -190,701 +245,833 @@ body {
 
     justify-content: center;
 
-    font-size: 15px;
+    font-size: 21px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+.step-label {
+    font-size: 17px;
+
+    color: #536987;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+
+/* Active */
+
+.step-button.active .step-number {
+    background: #1764e8;
+
+    color: #ffffff;
+}
+
+
+.step-button.active .step-label {
+    color: #1764e8;
 
     font-weight: 600;
 }
 
-.progress-item.active {
-    color: #1260e8;
+
+/* Completed */
+
+.step-button.completed .step-number {
+    background: #1764e8;
+
+    color: #ffffff;
 }
 
-.progress-item.active .progress-circle {
-    background: #1260e8;
 
-    color: white;
+.step-button.completed .step-label {
+    color: #1764e8;
 }
 
-.progress-line {
-    width: 100px;
+
+/* Hover */
+
+.step-button:hover .step-number {
+    background: #dce8ff;
+
+    color: #1764e8;
+}
+
+
+.step-button.active:hover .step-number {
+    background: #1259d0;
+
+    color: #ffffff;
+}
+
+
+/* Lines */
+
+.step-line {
+    width: 150px;
 
     height: 1px;
 
-    background: #d7dee9;
+    background: #d6deea;
 
-    margin-top: 19px;
+    margin-top: 28px;
 }
 
 
-/* =====================================================
-   MAIN CARDS
-===================================================== */
+/* =========================================
+   FORM SECTIONS
+========================================= */
 
-.trip-card {
-    background: white;
+.form-section {
+    background: #ffffff;
 
-    border: 1px solid #e4eaf2;
+    border: 1px solid #dce4ef;
 
-    border-radius: 12px;
+    border-radius: 15px;
 
-    padding: 26px;
+    margin-bottom: 35px;
 
-    margin-bottom: 16px;
+    overflow: hidden;
+
+    scroll-margin-top: 105px;
 
     box-shadow:
-        0 2px 10px rgba(20, 45, 80, 0.035);
+        0 5px 18px rgba(
+            25,
+            55,
+            95,
+            0.04
+        );
 }
 
-.small-card {
-    margin-bottom: 0;
+
+.section-header {
+    padding: 32px 35px;
+
+    border-bottom: 1px solid #e4e9f1;
 }
 
 
-/* =====================================================
-   SECTION HEADING
-===================================================== */
+.section-header h2 {
+    font-size: 28px;
 
-.section-heading {
-    display: flex;
+    color: #082653;
 
-    align-items: center;
-
-    gap: 14px;
-
-    margin-bottom: 22px;
+    margin-bottom: 9px;
 }
 
-.section-icon {
-    width: 40px;
 
-    height: 40px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: #123f87;
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
+.section-header p {
     font-size: 17px;
 
+    color: #718096;
+}
+
+
+.form-content {
+    padding: 32px 35px;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+    display: block;
+
+    font-size: 16px;
+
     font-weight: 600;
-}
 
-.section-heading h2 {
-    margin: 0 0 5px;
+    color: #173b70;
 
-    font-size: 19px;
-
-    color: #15284d;
-}
-
-.section-heading p {
-    margin: 0;
-
-    font-size: 13px;
-
-    color: #718098;
+    margin-bottom: 10px;
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+/* =========================================
+   INPUTS
+========================================= */
 
-.search-box {
-    height: 50px;
+.search-input,
+.input-group input,
+.input-group select,
+.input-group textarea {
 
-    border: 1px solid #d8e0eb;
+    width: 100%;
+
+    border: 1px solid #d7e0ec;
 
     border-radius: 9px;
 
-    display: flex;
+    padding: 14px 16px;
 
-    align-items: center;
+    font-family: inherit;
 
-    padding: 0 15px;
+    font-size: 16px;
 
-    gap: 10px;
+    color: #173b70;
 
-    margin-bottom: 22px;
-}
-
-.search-box span {
-    font-size: 26px;
-
-    color: #172b55;
-
-    transform: rotate(-15deg);
-}
-
-.search-box input {
-    width: 100%;
-
-    border: none;
+    background: #ffffff;
 
     outline: none;
 
-    font-size: 14px;
-
-    color: #172b55;
-}
-
-.search-box input::placeholder {
-    color: #7c899e;
+    transition: 0.2s ease;
 }
 
 
-/* =====================================================
-   POPULAR DESTINATIONS
-===================================================== */
+.search-input:focus,
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
 
-.trip-card h3 {
-    margin: 0 0 14px;
+    border-color: #1764e8;
 
-    font-size: 15px;
-
-    color: #172b55;
+    box-shadow:
+        0 0 0 3px rgba(
+            23,
+            100,
+            232,
+            0.10
+        );
 }
+
+
+.input-group {
+    margin-bottom: 28px;
+}
+
+
+.input-group textarea {
+    resize: vertical;
+}
+
+
+/* =========================================
+   DESTINATIONS
+========================================= */
+
+.destination-suggestions {
+    margin-top: 5px;
+}
+
+
+.sub-heading {
+    margin-top: 30px;
+
+    margin-bottom: 18px;
+
+    font-size: 18px;
+
+    color: #173b70;
+}
+
 
 .destination-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(
+            4,
+            1fr
+        );
 
-    gap: 16px;
+    gap: 18px;
 }
 
+
 .destination-card {
-    padding: 0;
+    border: 1px solid #dce4ef;
 
-    background: white;
+    background: #ffffff;
 
-    border: 1px solid #dfe6ef;
-
-    border-radius: 10px;
+    border-radius: 11px;
 
     overflow: hidden;
 
-    text-align: left;
-
     cursor: pointer;
 
-    transition: 0.2s;
+    text-align: left;
+
+    font-family: inherit;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.destination-card:hover {
-    transform: translateY(-2px);
-
-    border-color: #2867d9;
-
-    box-shadow:
-        0 5px 15px rgba(40, 103, 217, 0.1);
-}
-
-.destination-card.selected {
-    border: 2px solid #1260e8;
-}
 
 .destination-card img {
     width: 100%;
 
-    height: 120px;
+    height: 130px;
 
     object-fit: cover;
 
     display: block;
 }
 
-.destination-info {
-    padding: 12px;
+
+.destination-card div {
+    padding: 14px;
 }
 
-.destination-info strong {
+
+.destination-card strong {
     display: block;
 
+    color: #082653;
+
+    font-size: 17px;
+
     margin-bottom: 5px;
+}
+
+
+.destination-card span {
+    color: #718096;
+
+    font-size: 14px;
+}
+
+
+.destination-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #1764e8;
+
+    box-shadow:
+        0 8px 20px rgba(
+            20,
+            70,
+            130,
+            0.10
+        );
+}
+
+
+.destination-card.selected {
+    border: 2px solid #1764e8;
+
+    box-shadow:
+        0 0 0 3px rgba(
+            23,
+            100,
+            232,
+            0.10
+        );
+}
+
+
+/* =========================================
+   SELECTED VALUE
+========================================= */
+
+.selected-value {
+
+    margin-top: 25px;
+
+    padding: 15px 18px;
+
+    background: #f3f7ff;
+
+    border-radius: 8px;
+
+    color: #536987;
 
     font-size: 15px;
-
-    color: #15284d;
-}
-
-.destination-info span {
-    font-size: 12px;
-
-    color: #718098;
 }
 
 
-/* =====================================================
-   DATES
-===================================================== */
+.selected-value strong {
+    color: #1764e8;
 
-.date-grid {
+    margin-left: 5px;
+}
+
+
+/* =========================================
+   DATE INPUTS
+========================================= */
+
+.input-grid {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 25px;
 }
 
-.input-group label {
-    display: block;
 
-    margin-bottom: 8px;
+/* =========================================
+   TRAVELLER COUNTER
+========================================= */
 
-    font-size: 13px;
-
-    color: #273958;
-
-    font-weight: 500;
-}
-
-.input-group input {
-    width: 100%;
-
-    height: 48px;
-
-    border: 1px solid #d8e0eb;
-
-    border-radius: 8px;
-
-    padding: 0 14px;
-
-    font-size: 14px;
-
-    color: #243451;
-
-    outline: none;
-
-    background: white;
-}
-
-.input-group input:focus {
-    border-color: #2867d9;
-
-    box-shadow:
-        0 0 0 3px rgba(40, 103, 217, 0.08);
-}
-
-
-/* =====================================================
-   TWO COLUMN
-===================================================== */
-
-.two-column {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 16px;
-
-    margin-bottom: 16px;
-}
-
-
-/* =====================================================
-   PEOPLE
-===================================================== */
-
-.people-control {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 45px;
-
-    padding: 12px 0;
-}
-
-.people-control button {
-    width: 40px;
-
-    height: 40px;
-
-    border-radius: 50%;
-
-    border: none;
-
-    background: #eaf1ff;
-
-    color: #1454bb;
-
-    font-size: 23px;
-
-    cursor: pointer;
-}
-
-.people-control button:hover {
-    background: #dce8ff;
-}
-
-.people-number {
-    text-align: center;
-}
-
-.people-number strong {
-    display: block;
-
-    font-size: 27px;
-
-    color: #152b58;
-}
-
-.people-number span {
-    font-size: 12px;
-
-    color: #718098;
-}
-
-
-/* =====================================================
-   BUDGET
-===================================================== */
-
-.budget-input {
-    height: 48px;
-
-    display: flex;
-
-    align-items: center;
-
-    border: 1px solid #d8e0eb;
-
-    border-radius: 8px;
-
-    overflow: hidden;
-}
-
-.budget-input span {
-    padding: 0 15px;
-
-    font-size: 17px;
-
-    color: #263b5e;
-}
-
-.budget-input input {
-    flex: 1;
-
-    height: 100%;
-
-    border: none;
-
-    outline: none;
-
-    font-size: 14px;
-}
-
-
-/* =====================================================
-   INTERESTS
-===================================================== */
-
-.interest-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(6, 1fr);
-
-    gap: 12px;
-}
-
-.interest-option {
-    min-height: 58px;
-
-    border: 1px solid #dce3ed;
-
-    border-radius: 9px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 6px;
-
-    cursor: pointer;
-
-    color: #253653;
-
-    font-size: 13px;
-
-    transition: 0.2s;
-}
-
-.interest-option input {
-    display: none;
-}
-
-.interest-option span {
-    font-size: 17px;
-}
-
-.interest-option:hover {
-    border-color: #2867d9;
-}
-
-.interest-option:has(input:checked) {
-    background: #edf4ff;
-
-    border-color: #1260e8;
-
-    color: #1254bb;
-}
-
-
-/* =====================================================
-   TRAVEL STYLE
-===================================================== */
-
-.travel-style-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-.style-option {
-    min-height: 78px;
-
-    border: 1px solid #dce3ed;
-
-    border-radius: 9px;
-
-    padding: 15px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.style-option input {
-    display: none;
-}
-
-.style-option:hover {
-    border-color: #2867d9;
-}
-
-.style-option:has(input:checked) {
-    border-color: #1260e8;
-
-    background: #f2f6ff;
-}
-
-.radio-circle {
-    width: 20px;
-
-    height: 20px;
-
-    border-radius: 50%;
-
-    border: 1px solid #b7c1d0;
-
-    flex-shrink: 0;
-}
-
-.style-option:has(input:checked)
-.radio-circle {
-    border: 5px solid #1260e8;
-}
-
-.style-emoji {
-    font-size: 22px;
-}
-
-.style-option strong {
-    display: block;
-
-    margin-bottom: 4px;
-
-    font-size: 14px;
-
-    color: #1b2d4d;
-}
-
-.style-option small {
-    display: block;
-
-    color: #7a879a;
-
-    font-size: 11px;
-}
-
-
-/* =====================================================
-   ACTION BUTTONS
-===================================================== */
-
-.form-actions {
+.traveller-counter {
     display: flex;
 
     align-items: center;
 
     justify-content: space-between;
 
-    margin-top: 25px;
+    padding: 20px;
+
+    border: 1px solid #e0e6ef;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
 }
 
-.cancel-button {
-    padding: 13px 28px;
 
-    border: 1px solid #d8e0eb;
+.traveller-counter h3 {
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+
+.traveller-counter p {
+    color: #718096;
+
+    font-size: 14px;
+}
+
+
+.counter {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+.counter-button {
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid #d4ddea;
+
+    background: #ffffff;
+
+    color: #1764e8;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+.counter-button:hover {
+    background: #eaf1ff;
+}
+
+
+.counter span {
+    min-width: 20px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+.traveller-summary {
+    margin-top: 25px;
+
+    padding: 16px;
+
+    background: #f3f7ff;
 
     border-radius: 8px;
 
-    background: white;
+    color: #536987;
+}
 
-    color: #18294b;
 
-    text-decoration: none;
+.traveller-summary strong {
+    color: #1764e8;
+
+    margin-left: 5px;
+}
+
+
+/* =========================================
+   INTERESTS
+========================================= */
+
+.interest-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.interest-button {
+    border: 1px solid #d8e1ed;
+
+    background: #ffffff;
+
+    color: #536987;
+
+    border-radius: 22px;
+
+    padding: 11px 17px;
+
+    cursor: pointer;
+
+    font-family: inherit;
 
     font-size: 14px;
 
-    font-weight: 500;
+    transition: 0.2s ease;
 }
 
-.cancel-button:hover {
-    background: #f6f8fb;
+
+.interest-button:hover {
+    border-color: #1764e8;
+
+    color: #1764e8;
 }
 
+
+.interest-button.selected {
+    background: #eaf1ff;
+
+    border-color: #1764e8;
+
+    color: #1764e8;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   REVIEW BOX
+========================================= */
+
+.review-box {
+    margin-top: 30px;
+
+    padding: 23px;
+
+    background: #f7f9fc;
+
+    border: 1px solid #e0e6ef;
+
+    border-radius: 11px;
+}
+
+
+.review-box h3 {
+    font-size: 20px;
+
+    margin-bottom: 18px;
+
+    color: #082653;
+}
+
+
+.review-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #e2e7ee;
+
+    font-size: 15px;
+}
+
+
+.review-row:last-child {
+    border-bottom: none;
+}
+
+
+.review-row span {
+    color: #718096;
+}
+
+
+.review-row strong {
+    color: #173b70;
+
+    text-align: right;
+}
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+.form-message {
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #e53935;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.button-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+
+.back-button,
+.next-button,
 .create-button {
     border: none;
 
     border-radius: 8px;
 
-    background: #1260e8;
+    padding: 13px 21px;
 
-    color: white;
+    font-family: inherit;
 
-    padding: 14px 28px;
-
-    font-size: 14px;
+    font-size: 15px;
 
     font-weight: 600;
 
     cursor: pointer;
 
-    min-width: 210px;
+    transition: 0.2s ease;
 }
 
-.create-button span {
-    margin-left: 8px;
 
-    font-size: 18px;
+.back-button {
+    background: #ffffff;
+
+    border: 1px solid #d7e0ec;
+
+    color: #536987;
 }
+
+
+.back-button:hover {
+    background: #f3f6fa;
+}
+
+
+.next-button {
+    background: #1764e8;
+
+    color: #ffffff;
+
+    margin-left: auto;
+}
+
+
+.next-button:hover {
+    background: #1259d0;
+
+    transform: translateY(-1px);
+}
+
+
+.create-button {
+    background: #1764e8;
+
+    color: #ffffff;
+}
+
 
 .create-button:hover {
-    background: #0c4fc7;
+    background: #1259d0;
+
+    transform: translateY(-1px);
 }
 
 
-/* =====================================================
+/* =========================================
    RESPONSIVE
-===================================================== */
+========================================= */
 
-@media (max-width: 850px) {
-
-    .trip-header {
-        padding: 0 25px;
-    }
+@media (max-width: 1000px) {
 
     .destination-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(
+                2,
+                1fr
+            );
     }
 
-    .interest-grid {
-        grid-template-columns:
-            repeat(3, 1fr);
+
+    .step-wrapper {
+        width: 140px;
     }
 
-    .travel-style-grid {
-        grid-template-columns: 1fr;
+
+    .step-line {
+        width: 80px;
     }
+
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .trip-container {
+    .topbar {
+        padding: 0 20px;
+    }
+
+
+    .logo-text {
+        font-size: 23px;
+    }
+
+
+    .logo-plane {
+        font-size: 23px;
+    }
+
+
+    .trip-page {
         width: 94%;
-
-        padding-top: 25px;
     }
 
-    .trip-header {
-        height: 65px;
 
-        padding: 0 18px;
+    .page-heading h1 {
+        font-size: 30px;
     }
 
-    .back-dashboard {
-        font-size: 12px;
+
+    .page-heading p {
+        font-size: 16px;
     }
 
-    .page-title h1 {
-        font-size: 26px;
+
+    .steps-container {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding-bottom: 10px;
     }
 
-    .progress-item {
-        min-width: 55px;
 
-        font-size: 10px;
+    .step-wrapper {
+        width: 120px;
+
+        flex-shrink: 0;
     }
 
-    .progress-line {
-        width: 30px;
+
+    .step-line {
+        width: 50px;
+
+        flex-shrink: 0;
     }
 
-    .progress-circle {
-        width: 32px;
 
-        height: 32px;
-    }
-
-    .trip-card {
-        padding: 20px;
-    }
-
-    .date-grid,
-    .two-column {
+    .destination-grid {
         grid-template-columns: 1fr;
     }
 
-    .interest-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+
+    .input-grid {
+        grid-template-columns: 1fr;
     }
 
-    .form-actions {
-        gap: 12px;
+
+    .section-header,
+    .form-content {
+        padding: 25px 20px;
     }
 
-    .create-button {
-        min-width: 0;
 
-        flex: 1;
+    .topbar-right {
+        gap: 6px;
     }
+
+
+    .topbar-right a {
+        padding: 8px 10px;
+
+        font-size: 12px;
+    }
+
+}
+/* Compact trip page */
+
+.trip-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 30px;
+}
+
+.trip-container h1 {
+    font-size: 28px;
+}
+
+.trip-container h2 {
+    font-size: 21px;
+}
+
+.trip-container p {
+    font-size: 14px;
+}
+
+.progress-step {
+    font-size: 14px;
+}
+
+.progress-number {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+}
+
+.form-section {
+    padding: 25px;
+}
+
+.form-section h2 {
+    font-size: 22px;
+}
+
+.form-section p {
+    font-size: 14px;
+}
+
+input,
+select {
+    height: 42px;
+    font-size: 14px;
+}
+
+button {
+    font-size: 14px;
+    padding: 10px 18px;
 }
