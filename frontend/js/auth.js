@@ -4,12 +4,12 @@
 
 //     e.preventDefault();
 
-//     const email = document
-//         .getElementById("email")
-//         .value
-//         .trim();
+    // const email = document
+    //     .getElementById("email")
+    //     .value
+    //     .trim();
 
-//     const password = document
+    // const password = document
 //         .getElementById("password")
 //         .value;
 
@@ -83,7 +83,7 @@
 
 // });
 
-```javascript
+
 /* =========================================
    LOGIN
    ========================================= */
@@ -92,10 +92,12 @@ const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
-    loginForm.addEventListener("submit", async (e) => {
+    loginForm.addEventListener("submit", function (e) {
 
         e.preventDefault();
 
+
+        // Get form values
         const email = document
             .getElementById("email")
             .value
@@ -112,16 +114,60 @@ if (loginForm) {
 
         // Basic validation
         if (!email || !password) {
+
             alert("Please fill in both fields.");
             return;
+
         }
 
 
-        console.log("Login attempt:", {
-            email,
-            password,
-            remember
+        // Get registered users
+        const users =
+            JSON.parse(localStorage.getItem("offwegoUsers")) || [];
+
+
+        // Find user with matching email
+        const user = users.find(function (user) {
+
+            return user.email === email;
+
         });
+
+
+        // Check if user exists
+        if (!user) {
+
+            alert("No account found with this email.");
+            return;
+
+        }
+
+
+        // Check password
+        if (user.password !== password) {
+
+            alert("Incorrect password.");
+            return;
+
+        }
+
+
+        // Login successful
+        localStorage.setItem(
+            "offwegoLoggedInUser",
+            JSON.stringify(user)
+        );
+
+
+        alert("Login successful!");
+
+
+        // Go to dashboard
+        window.location.href = "dashboard.html";
+
+    });
+
+}
 
 
         /*
@@ -171,24 +217,26 @@ if (loginForm) {
         }
         */
 
-    });
+//     });
 
-}
+// }
 
 
 /* =========================================
    SIGN UP / REGISTER
    ========================================= */
 
+
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
 
-    registerForm.addEventListener("submit", async (e) => {
+    registerForm.addEventListener("submit", function (e) {
 
         e.preventDefault();
 
 
+        // Get form values
         const name = document
             .getElementById("name")
             .value
@@ -208,33 +256,84 @@ if (registerForm) {
             .value;
 
 
-        // Basic validation
+        // Check empty fields
         if (!name || !email || !password || !confirmPassword) {
+
             alert("Please fill in all fields.");
             return;
+
         }
 
 
-        // Password confirmation
+        // Check password confirmation
         if (password !== confirmPassword) {
+
             alert("Passwords do not match.");
             return;
+
         }
 
 
-        // Password length
+        // Check password length
         if (password.length < 6) {
+
             alert("Password must be at least 6 characters.");
             return;
+
         }
 
 
-        console.log("Registration attempt:", {
-            name,
-            email,
-            password
+        // Get existing users from Local Storage
+        const users =
+            JSON.parse(localStorage.getItem("offwegoUsers")) || [];
+
+
+        // Check if email is already registered
+        const existingUser = users.find(function (user) {
+
+            return user.email === email;
+
         });
 
+
+        if (existingUser) {
+
+            alert("An account with this email already exists.");
+            return;
+
+        }
+
+
+        // Create new user
+        const newUser = {
+
+            name: name,
+            email: email,
+            password: password
+
+        };
+
+
+        // Add new user to users array
+        users.push(newUser);
+
+
+        // Save updated users array
+        localStorage.setItem(
+            "offwegoUsers",
+            JSON.stringify(users)
+        );
+
+
+        alert("Account created successfully!");
+
+
+        // Redirect to login
+        window.location.href = "login.html";
+
+    });
+
+}
 
         /*
         =========================================
@@ -281,7 +380,7 @@ if (registerForm) {
         }
         */
 
-    });
+    // });
 
-}
-```
+// }
+
