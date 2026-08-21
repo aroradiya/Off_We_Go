@@ -1,7 +1,33 @@
-// ==========================================
-// DASHBOARD JAVASCRIPT
-// ==========================================
 
+
+
+// AUTHENTICATION CHECK 
+
+const loggedInUser =
+    JSON.parse(localStorage.getItem("offwegoLoggedInUser"));
+
+if (!loggedInUser) {
+
+    window.location.href = "login.html";
+
+}
+
+const userName = document.getElementById("userName");
+
+if (userName) {
+
+    userName.textContent = loggedInUser.name;
+
+}
+
+const profileAvatar = document.getElementById("profileAvatar");
+
+if (profileAvatar) {
+
+    profileAvatar.textContent =
+        loggedInUser.name.charAt(0).toUpperCase();
+
+}
 
 // NEW TRIP BUTTON
 
@@ -62,7 +88,7 @@ if (logoutBtn) {
 
     logoutBtn.addEventListener("click", function () {
 
-        localStorage.removeItem("offwegoUser");
+        localStorage.removeItem("offwegoLoggedInUser");
 
         window.location.href = "login.html";
 
