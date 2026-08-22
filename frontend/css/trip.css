@@ -42,7 +42,7 @@ body {
 
     justify-content: space-between;
 
-    padding: 0 55px;
+    padding: 0 2%;
 
     position: sticky;
 
@@ -68,7 +68,7 @@ body {
 
 
 .logo-text {
-    font-size: 27px;
+    font-size: 25px;
 
     font-weight: 700;
 
@@ -199,7 +199,7 @@ body {
 
 
 .step-wrapper {
-    width: 180px;
+    width: 1300px;
 
     display: flex;
 
@@ -229,9 +229,9 @@ body {
 
 
 .step-number {
-    width: 56px;
+    width: 45px;
 
-    height: 56px;
+    height: 45px;
 
     border-radius: 50%;
 
@@ -245,7 +245,7 @@ body {
 
     justify-content: center;
 
-    font-size: 21px;
+    font-size: 15px;
 
     font-weight: 600;
 
