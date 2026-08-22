@@ -134,7 +134,7 @@ dashboardTrips.forEach(function (trip) {
 
 if (viewAllContainer) {
 
-    if (upcomingTrips.length > 3) {
+    if (trips.length > 3) {
 
         viewAllContainer.style.display = "block";
 
