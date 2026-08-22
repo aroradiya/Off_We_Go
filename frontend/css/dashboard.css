@@ -437,6 +437,27 @@ body {
 
 
 /* ================================
+   VIEW ALL TRIPS
+================================ */
+
+.view-all-container {
+    display: none;
+    text-align: right;
+    margin-top: 18px;
+}
+
+.view-all-btn {
+    text-decoration: none;
+    color: #17439a;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.view-all-btn:hover {
+    text-decoration: underline;
+}
+
+/* ================================
    SURPRISE CARD
 ================================ */
 

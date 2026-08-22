@@ -35,13 +35,49 @@ if (profileAvatar) {
 
 const tripGrid = document.getElementById("tripGrid");
 
+const viewAllContainer =
+    document.getElementById("viewAllContainer");
+
 const trips =
     JSON.parse(localStorage.getItem("offwegoTrips")) || [];
 
 
-// GENERATING THE CARDS FOR TRIPS CREATED
+// ==========================================
+// SORT TRIPS BY UPCOMING DATE
+// ==========================================
 
-trips.forEach(function (trip) {
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const upcomingTrips = trips
+    .filter(function (trip) {
+
+        const tripDate = new Date(trip.startDate);
+
+        return tripDate >= today;
+
+    })
+    .sort(function (a, b) {
+
+        return new Date(a.startDate) -
+               new Date(b.startDate);
+
+    });
+
+
+// ==========================================
+// SHOW ONLY 3 TRIPS ON DASHBOARD
+// ==========================================
+
+const dashboardTrips =
+    upcomingTrips.slice(0, 3);
+
+
+// ==========================================
+// GENERATE TRIP CARDS
+// ==========================================
+
+dashboardTrips.forEach(function (trip) {
 
     const card = document.createElement("a");
 
@@ -74,7 +110,8 @@ trips.forEach(function (trip) {
             <div class="trip-bottom">
 
                 <span>
-                ♟ ${trip.adults} Adults · ${trip.children} Children
+                    ♟ ${trip.adults} Adults ·
+                    ${trip.children} Children
                 </span>
 
                 <strong>
@@ -89,6 +126,25 @@ trips.forEach(function (trip) {
     tripGrid.appendChild(card);
 
 });
+
+
+// ==========================================
+// VIEW ALL TRIPS BUTTON
+// ==========================================
+
+if (viewAllContainer) {
+
+    if (upcomingTrips.length > 3) {
+
+        viewAllContainer.style.display = "block";
+
+    } else {
+
+        viewAllContainer.style.display = "none";
+
+    }
+
+}
 
 // NEW TRIP BUTTON
 
