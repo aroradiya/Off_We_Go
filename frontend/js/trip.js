@@ -881,11 +881,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /* Save trip */
 
+            // Get existing trips from Local Storage
+            const trips =
+            JSON.parse(localStorage.getItem("offwegoTrips")) || [];
+
+            // Add the newly created trip
+            trips.push(tripData);
+
+            // Save all trips back to Local Storage
             localStorage.setItem(
-                "offwegoCurrentTrip",
-                JSON.stringify(
-                    tripData
-                )
+                "offwegoTrips",
+                JSON.stringify(trips)
             );
 
 
