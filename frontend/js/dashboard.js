@@ -83,7 +83,7 @@ dashboardTrips.forEach(function (trip) {
 
     card.classList.add("trip-card");
 
-    card.href = "#";
+    card.href = "itinerary.html?id=" + trip.id;
 
     card.innerHTML = `
         <div class="trip-image">

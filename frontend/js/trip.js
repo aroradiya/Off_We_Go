@@ -847,6 +847,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const tripData = {
 
+                id: Date.now(),
+
                 destination:
                     destination,
 
