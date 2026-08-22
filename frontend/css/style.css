@@ -998,7 +998,7 @@ body {
 ========================= */
 
 .about-section {
-    padding: 110px 7%;
+    padding: 100px 7%;
     background-color: #f8fafc;
 }
 
@@ -1006,33 +1006,40 @@ body {
     max-width: 1150px;
     margin: 0 auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
 
+    align-items: center;
     gap: 90px;
 }
 
+
+/* LEFT SIDE */
+
 .about-text {
-    max-width: 680px;
+    max-width: 620px;
 }
 
 .about-label {
     color: #2563eb;
+
     font-size: 12px;
     font-weight: 700;
+
     letter-spacing: 2px;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
 .about-text h2 {
-    font-size: 42px;
-    line-height: 1.2;
+    font-size: 48px;
+    line-height: 1.1;
 
     color: #172033;
 
     margin-bottom: 25px;
+
+    letter-spacing: -1.5px;
 }
 
 .about-text h2 span {
@@ -1045,101 +1052,152 @@ body {
     font-size: 15px;
     line-height: 1.8;
 
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 
+/* BUTTON */
 
-/* HIGHLIGHT CARD */
+.about-btn {
+    display: inline-flex;
+    align-items: center;
 
-/* .about-highlight {
-    min-width: 260px;
-    padding: 45px 35px;
+    margin-top: 12px;
 
-    background-color: white;
+    padding: 12px 20px;
 
-    border: 1px solid #e5e7eb;
-    border-radius: 20px;
+    border-radius: 8px;
 
-    text-align: center;
+    background-color: #172033;
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.3s ease;
 }
 
-.about-icon {
-    width: 60px;
-    height: 60px;
+.about-btn:hover {
+    background-color: #2563eb;
+}
 
-    margin: 0 auto 20px;
+
+/* =========================
+   RIGHT VISUAL
+========================= */
+
+.about-visual {
+    position: relative;
+
+    min-height: 380px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* MAIN CARD */
+
+.about-card-main {
+    width: 320px;
+    min-height: 280px;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    background-color: #172033;
+
+    color: white;
+
+    box-shadow: 0 20px 45px rgba(23, 32, 51, 0.18);
+
+    transform: rotate(-3deg);
+}
+/* 
+.about-plane {
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    border-radius: 10px;
+
     background-color: #eff6ff;
     color: #2563eb;
 
-    border-radius: 15px;
+    font-size: 18px;
 
-    font-size: 28px;
-
-    transform: rotate(-45deg);
-}
-
-.about-highlight h3 {
-    font-size: 22px;
-    color: #172033;
-    margin-bottom: 5px;
-}
-
-.about-highlight p {
-    color: #64748b;
-    font-size: 14px;
+    transform: translateY(-8px) rotate(-20deg);
 } */
 
-.about-highlight {
-    min-width: 280px;
+.about-card-main h3 {
+    font-size: 28px;
+    line-height: 1.2;
 
-    padding: 50px 40px;
-
-    background-color: white;
-
-    border: 1px solid #e5e7eb;
-    border-radius: 22px;
-
-    text-align: center;
-
-    box-shadow: 0 10px 30px rgba(23, 32, 51, 0.06);
+    margin-bottom: 15px;
 }
 
-.about-icon {
-    width: 60px;
-    height: 60px;
+.about-card-main h3 span {
+    color: #60a5fa;
+}
 
-    margin: 0 auto 20px;
+.about-card-main p {
+    color: #cbd5e1;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* SMALL CARDS */
+
+.about-card-small {
+    position: absolute;
+
+    top: 25px;
+    right: 20px;
+
+    padding: 16px 20px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
 
-    background-color: #eff6ff;
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 25px rgba(23, 32, 51, 0.08);
+}
+
+.about-card-small strong {
     color: #2563eb;
-
-    border-radius: 15px;
-
-    font-size: 28px;
-
-    transform: rotate(-45deg);
+    font-size: 13px;
 }
 
-.about-highlight h3 {
-    font-size: 22px;
+.about-card-small span {
     color: #172033;
-
-    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.about-highlight p {
-    color: #64748b;
-    font-size: 14px;
+.about-card-small.second {
+    top: auto;
+    right: auto;
+    bottom: 25px;
+    left: 20px;
 }
 /* =========================
    BLOG
