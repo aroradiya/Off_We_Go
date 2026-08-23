@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: #17233c;
+}
+
+.itinerary-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #17439a;
+}
+
+h1 {
+    margin-top: 40px;
+}
+
+.trip-details {
+    margin-top: 30px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e7ebf1;
+}
+
+.trip-details p {
+    margin: 15px 0;
+}
+
+/* ================================
+   ITINERARY SECTION
+================================ */
+
+.itinerary-section {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 30px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    color: #17233c;
+}
+
+.section-heading p {
+    margin: 0;
+    font-size: 14px;
+    color: #7b8493;
+}
+
+.itinerary-container {
+    width: 100%;
+}
+
+/* ================================
+   ITINERARY DAYS
+================================ */
+
+.itinerary-day {
+    background: white;
+    border: 1px solid #e7ebf1;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(30, 50, 80, 0.05);
+}
+
+.day-header {
+    background: #123b78;
+    color: white;
+    padding: 14px 20px;
+}
+
+.day-number {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.day-content {
+    padding: 20px;
+}
+
+.day-content h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: #17233c;
+}
+
+.day-content p {
+    margin: 0;
+    font-size: 13px;
+    color: #7b8493;
+}

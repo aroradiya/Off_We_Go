@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Itinerary - OffWeGo</title>
+
+    <link rel="stylesheet" href="../css/itinerary.css">
+
+</head>
+
+<body>
+
+    <main class="itinerary-page">
+
+        <a href="dashboard.html" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+        <h1 id="tripDestination">
+            Trip Itinerary
+        </h1>
+
+        <p id="tripDates"></p>
+
+        <div class="trip-details">
+
+            <p>
+                <strong>Travellers:</strong>
+                <span id="tripTravellers"></span>
+            </p>
+
+            <p>
+                <strong>Budget:</strong>
+                <span id="tripBudget"></span>
+            </p>
+
+            <p>
+                <strong>Interests:</strong>
+                <span id="tripInterests"></span>
+            </p>
+
+            <p>
+                <strong>Notes:</strong>
+                <span id="tripNotes"></span>
+            </p>
+
+        </div>
+
+    </main>
+
+    <!-- =========================================
+     ITINERARY
+========================================= -->
+
+<section class="itinerary-section">
+
+    <div class="section-heading">
+
+        <h2>Your Itinerary</h2>
+
+        <p>
+            A day-by-day plan for your trip.
+        </p>
+
+    </div>
+
+    <div id="itineraryContainer" class="itinerary-container">
+        <!-- JavaScript will generate the itinerary here -->
+    </div>
+
+</section>
+
+    <script src="../js/itinerary.js"></script>
+
+</body>
+
+</html>

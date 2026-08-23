@@ -85,9 +85,12 @@ const completedTrips = trips.filter(function (trip) {
 function createTripCard(trip, status) {
 
     const card =
-        document.createElement("div");
+        document.createElement("a");
 
     card.classList.add("trip-card");
+
+    card.href =
+        "itinerary.html?id=" + trip.id;
 
     card.innerHTML = `
         <div class="trip-image">
