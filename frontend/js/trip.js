@@ -272,7 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
        DESTINATION SEARCH
     ========================================== */
 
-    const destinations = [
+    // Starts with a short built-in list, then switches to the full catalog once it loads
+    let destinations = [
         "Manali",
         "Goa",
         "Dubai",
@@ -282,6 +283,20 @@ document.addEventListener("DOMContentLoaded", function () {
         "Jaipur",
         "London"
     ];
+
+    OffWeGoAPI.getDestinations()
+        .then(function (catalog) {
+
+            if (catalog.length > 0) {
+                destinations = catalog.map(function (item) {
+                    return item.name;
+                });
+            }
+
+        })
+        .catch(function () {
+            // keep the built-in list if the catalog cannot be loaded
+        });
 
 
     const suggestions =

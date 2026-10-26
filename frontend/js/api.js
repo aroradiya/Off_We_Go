@@ -71,6 +71,29 @@ const OffWeGoAPI = {
         return this.request("/auth/register", { method: "POST", body: { name: name, email: email, password: password } });
     },
 
+    // ---------- Destinations (the catalog) ----------
+
+    // Every destination, without the long day plans. Fetched once per page.
+    getDestinations() {
+        if (!this._destinationsPromise) {
+            this._destinationsPromise = this.request("/destinations")
+                .then(function (data) {
+                    return data.destinations;
+                })
+                .catch(function (error) {
+                    OffWeGoAPI._destinationsPromise = null; // try again next time
+                    throw error;
+                });
+        }
+        return this._destinationsPromise;
+    },
+
+    // One destination with its day plans. Fails with status 404 if it is not in the catalog.
+    async getDestination(name) {
+        const data = await this.request("/destinations/" + encodeURIComponent(slugify(name)));
+        return data.destination;
+    },
+
     // ---------- Trips ----------
 
     async listTrips() {
@@ -218,4 +241,9 @@ function formatMoney(amount, currency) {
     } catch (error) {
         return currency + " " + amount;
     }
+}
+
+// "Hill Station" -> "hill-station": how a destination name becomes its web address
+function slugify(text) {
+    return String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }

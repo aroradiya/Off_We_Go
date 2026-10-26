@@ -11,6 +11,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authroute");
 const tripRoutes = require("./routes/trips");
 const bookingRoutes = require("./routes/bookings");
+const destinationRoutes = require("./routes/destinations");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -34,6 +35,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/trips", tripRoutes);
 
 app.use("/api/trips/:tripId/bookings", bookingRoutes);
+
+app.use("/api/destinations", destinationRoutes);
 
 // 404 + central error handler (Express 5 forwards async errors here automatically)
 app.use((req, res) => {

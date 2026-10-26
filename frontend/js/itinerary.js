@@ -142,307 +142,12 @@ const itineraryContainer =
 
 function getActivitiesForDay(destination, day) {
 
-    const plans = {
-
-        Manali: [
-            {
-                title: "Arrival & Local Exploration",
-                items: [
-                    {
-                        icon: "🏨",
-                        name: "Hotel Check-in",
-                        description: "Check in and settle into your accommodation.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🌲",
-                        name: "Mall Road",
-                        description: "Explore local shops, cafes and the mountain surroundings.",
-                        interests: ["Shopping", "Food"]
-                    },
-                    {
-                        icon: "🍴",
-                        name: "Local Dinner",
-                        description: "Try some local Himachali cuisine.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Mountains & Adventure",
-                items: [
-                    {
-                        icon: "🏔️",
-                        name: "Solang Valley",
-                        description: "Enjoy mountain views and adventure activities.",
-                        interests: ["Adventure", "Nature"]
-                    },
-                    {
-                        icon: "🌲",
-                        name: "Nature Exploration",
-                        description: "Explore the surrounding Himalayan landscape.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🍴",
-                        name: "Mountain Cafe",
-                        description: "Relax with a meal while enjoying the views.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Culture & Sightseeing",
-                items: [
-                    {
-                        icon: "🏛️",
-                        name: "Hadimba Temple",
-                        description: "Visit one of Manali's most famous landmarks.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🛍️",
-                        name: "Local Market",
-                        description: "Explore local handicrafts and souvenirs.",
-                        interests: ["Shopping"]
-                    },
-                    {
-                        icon: "🌅",
-                        name: "Evening Walk",
-                        description: "Enjoy a relaxed evening around Manali.",
-                        interests: ["Nature"]
-                    }
-                ]
-            }
-        ],
-
-        Goa: [
-            {
-                title: "Arrival & Beach Evening",
-                items: [
-                    {
-                        icon: "🏨",
-                        name: "Hotel Check-in",
-                        description: "Check in and settle into your accommodation.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🏖️",
-                        name: "Baga Beach",
-                        description: "Relax by the beach and enjoy the sunset.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🍴",
-                        name: "Goan Dinner",
-                        description: "Try some local Goan cuisine.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Beaches & Adventure",
-                items: [
-                    {
-                        icon: "🏖️",
-                        name: "Calangute Beach",
-                        description: "Spend the morning relaxing by the sea.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🏰",
-                        name: "Fort Aguada",
-                        description: "Explore the historic Portuguese fort.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🌊",
-                        name: "Water Activities",
-                        description: "Try exciting activities along the coast.",
-                        interests: ["Adventure"]
-                    }
-                ]
-            },
-
-            {
-                title: "Panjim & Nightlife",
-                items: [
-                    {
-                        icon: "🏛️",
-                        name: "Panjim",
-                        description: "Explore the colourful streets and architecture.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🛍️",
-                        name: "Local Shopping",
-                        description: "Pick up souvenirs and local products.",
-                        interests: ["Shopping"]
-                    },
-                    {
-                        icon: "🌙",
-                        name: "Goa Nightlife",
-                        description: "Experience Goa's famous evening atmosphere.",
-                        interests: ["Nightlife"]
-                    }
-                ]
-            }
-        ],
-
-        Dubai: [
-            {
-                title: "Arrival & Dubai Marina",
-                items: [
-                    {
-                        icon: "🏨",
-                        name: "Hotel Check-in",
-                        description: "Check in and settle into your accommodation.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🌆",
-                        name: "Dubai Marina",
-                        description: "Explore the waterfront and surrounding area.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🍴",
-                        name: "Dinner",
-                        description: "Enjoy dinner with views of the city.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Burj Khalifa & Downtown",
-                items: [
-                    {
-                        icon: "🏙️",
-                        name: "Burj Khalifa",
-                        description: "Visit one of Dubai's most famous landmarks.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🛍️",
-                        name: "Dubai Mall",
-                        description: "Explore one of the world's largest shopping malls.",
-                        interests: ["Shopping"]
-                    },
-                    {
-                        icon: "⛲",
-                        name: "Dubai Fountain",
-                        description: "Enjoy the famous fountain show.",
-                        interests: ["Nature"]
-                    }
-                ]
-            },
-
-            {
-                title: "Desert Adventure",
-                items: [
-                    {
-                        icon: "🏜️",
-                        name: "Desert Safari",
-                        description: "Experience the desert and its surrounding landscape.",
-                        interests: ["Adventure", "Nature"]
-                    },
-                    {
-                        icon: "🐪",
-                        name: "Desert Activities",
-                        description: "Enjoy traditional desert experiences.",
-                        interests: ["Adventure"]
-                    },
-                    {
-                        icon: "🌅",
-                        name: "Desert Sunset",
-                        description: "Watch the sunset over the dunes.",
-                        interests: ["Nature"]
-                    }
-                ]
-            }
-        ],
-
-        Paris: [
-            {
-                title: "Arrival & Paris Evening",
-                items: [
-                    {
-                        icon: "🏨",
-                        name: "Hotel Check-in",
-                        description: "Check in and settle into your accommodation.",
-                        interests: ["Nature"]
-                    },
-                    {
-                        icon: "🗼",
-                        name: "Eiffel Tower",
-                        description: "See one of Paris's most iconic landmarks.",
-                        interests: ["History", "Nature"]
-                    },
-                    {
-                        icon: "🍴",
-                        name: "French Dinner",
-                        description: "Enjoy a traditional French meal.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Museums & Culture",
-                items: [
-                    {
-                        icon: "🏛️",
-                        name: "Louvre Museum",
-                        description: "Explore one of the world's most famous museums.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🚶",
-                        name: "City Walk",
-                        description: "Walk through the historic streets of Paris.",
-                        interests: ["Nature", "History"]
-                    },
-                    {
-                        icon: "🥐",
-                        name: "French Cafe",
-                        description: "Take a break at a traditional Parisian cafe.",
-                        interests: ["Food"]
-                    }
-                ]
-            },
-
-            {
-                title: "Shopping & Classic Paris",
-                items: [
-                    {
-                        icon: "🏛️",
-                        name: "Arc de Triomphe",
-                        description: "Visit the famous Parisian monument.",
-                        interests: ["History"]
-                    },
-                    {
-                        icon: "🛍️",
-                        name: "Champs-Élysées",
-                        description: "Explore one of Paris's most famous avenues.",
-                        interests: ["Shopping"]
-                    },
-                    {
-                        icon: "🌅",
-                        name: "Seine River",
-                        description: "Enjoy an evening along the Seine.",
-                        interests: ["Nature"]
-                    }
-                ]
-            }
-        ]
-    };
+    // The suggested day plans for this destination come from the catalog
+    // (loaded by loadCatalogPlans below). null means it is not in the catalog.
 
 
-    const destinationPlan = plans[destination];
+
+    const destinationPlan = catalogPlans;
 
 
     // ------------------------------------------
@@ -573,8 +278,46 @@ function getActivitiesForDay(destination, day) {
 
 const MAX_ACTIVITIES_PER_DAY = 20;
 
+// Asks the backend for this destination's suggested day plans.
+// Destinations that are not in the catalog get the generic plan instead.
+let catalogPlans = null;
+let catalogLoaded = false;
+
+async function loadCatalogPlans() {
+
+    if (catalogLoaded) {
+        return;
+    }
+
+    try {
+
+        const destination = await OffWeGoAPI.getDestination(trip.destination);
+
+        if (Array.isArray(destination.dayPlans) && destination.dayPlans.length > 0) {
+
+            // the catalog calls them "activities"; the generator below calls them "items"
+            catalogPlans = destination.dayPlans.map(function (plan) {
+                return { title: plan.title, items: plan.activities };
+            });
+
+        }
+
+    } catch (error) {
+
+        if (error.status !== 404) {
+            console.error("Could not load destination plans:", error.message);
+        }
+
+    }
+
+    catalogLoaded = true;
+}
+
+
 // Builds a suggested plan from the generator above (used the first time and on reset)
-function buildSuggestedItinerary() {
+async function buildSuggestedItinerary() {
+
+    await loadCatalogPlans();
 
     const days = [];
 
@@ -923,7 +666,7 @@ const resetItineraryButton = document.getElementById("resetItineraryButton");
 
 if (resetItineraryButton) {
 
-    resetItineraryButton.addEventListener("click", function () {
+    resetItineraryButton.addEventListener("click", async function () {
 
         const sure = confirm(
             "Replace your itinerary with the suggested plan? Your changes will be lost."
@@ -933,7 +676,7 @@ if (resetItineraryButton) {
             return;
         }
 
-        itinerary = buildSuggestedItinerary();
+        itinerary = await buildSuggestedItinerary();
 
         changeItinerary();
 
@@ -945,7 +688,7 @@ if (resetItineraryButton) {
 // First visit to this trip: build a suggested plan and save it
 if (itinerary.length === 0) {
 
-    itinerary = buildSuggestedItinerary();
+    itinerary = await buildSuggestedItinerary();
 
     renderItinerary();
 
