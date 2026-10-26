@@ -657,32 +657,16 @@
                 <div class="input-group">
 
                     <label for="budget">
-                        Budget
+                        Total budget (₹)
                     </label>
 
-                    <select id="budget">
-
-                        <option value="">
-                            Select your budget
-                        </option>
-
-                        <option value="Under ₹20,000">
-                            Under ₹20,000
-                        </option>
-
-                        <option value="₹20,000 - ₹50,000">
-                            ₹20,000 - ₹50,000
-                        </option>
-
-                        <option value="₹50,000 - ₹1,00,000">
-                            ₹50,000 - ₹1,00,000
-                        </option>
-
-                        <option value="Above ₹1,00,000">
-                            Above ₹1,00,000
-                        </option>
-
-                    </select>
+                    <input
+                        type="number"
+                        id="budget"
+                        min="1"
+                        step="1"
+                        placeholder="e.g. 50000"
+                    >
 
                 </div>
 
@@ -809,6 +793,7 @@
          JAVASCRIPT
     ========================================== -->
 
+    <script src="../js/api.js"></script>
     <script src="../js/trip.js"></script>
 
 </body>

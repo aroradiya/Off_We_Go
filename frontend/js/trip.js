@@ -1,3 +1,8 @@
+// Only logged-in users can create trips
+if (!OffWeGoAPI.getToken()) {
+    window.location.href = "login.html";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -689,7 +694,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     budget.addEventListener(
-        "change",
+        "input",
         updateReview
     );
 
@@ -779,6 +784,12 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
+        // trip.html has no review panel yet, so there is nothing to update
+        if (!reviewDestination) {
+            return;
+        }
+
+
         reviewDestination.textContent =
             destination || "-";
 
@@ -792,7 +803,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         reviewBudget.textContent =
-            budget.value || "-";
+            budget.value ? "₹" + budget.value : "-";
 
 
         reviewInterests.textContent =
@@ -815,9 +826,14 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
+    // When the page is opened as trip.html?edit=<trip id>, it edits that trip instead of creating a new one
+    const editId =
+        new URLSearchParams(window.location.search).get("edit");
+
+
     createTripButton.addEventListener(
         "click",
-        function () {
+        async function () {
 
 
             if (!validateDestination()) {
@@ -830,10 +846,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            if (!budget.value) {
+            if (!(Number(budget.value) > 0)) {
 
                 alert(
-                    "Please select your budget."
+                    "Please enter your total budget as a number greater than 0."
                 );
 
                 scrollToSection(
@@ -846,8 +862,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             const tripData = {
-
-                id: Date.now(),
 
                 destination:
                     destination,
@@ -864,11 +878,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 children:
                     children,
 
-                totalTravellers:
-                    adults + children,
-
-                budget:
-                    budget.value,
+                budgetAmount:
+                    Number(budget.value),
 
                 interests:
                     selectedInterests,
@@ -881,36 +892,43 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
 
-            /* Save trip */
+            /* Save trip to the backend */
 
-            // Get existing trips from Local Storage
-            const trips =
-            JSON.parse(localStorage.getItem("offwegoTrips")) || [];
+            createTripButton.disabled = true;
 
-            // Add the newly created trip
-            trips.push(tripData);
+            try {
 
-            // Save all trips back to Local Storage
-            localStorage.setItem(
-                "offwegoTrips",
-                JSON.stringify(trips)
-            );
+                if (editId) {
 
+                    await OffWeGoAPI.updateTrip(editId, tripData);
 
-            alert(
-                "Your trip has been created successfully! ✈"
-            );
+                    alert(
+                        "Your trip has been updated successfully! ✔"
+                    );
 
+                    window.location.href =
+                        "itinerary.html?id=" + encodeURIComponent(editId);
 
-            /*
-                For now go back to dashboard.
+                } else {
 
-                Later we can change this to:
-                itinerary.html
-            */
+                    await OffWeGoAPI.createTrip(tripData);
 
-            window.location.href =
-                "dashboard.html";
+                    alert(
+                        "Your trip has been created successfully! ✈"
+                    );
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }
+
+            } catch (error) {
+
+                alert(error.message);
+
+                createTripButton.disabled = false;
+
+            }
 
         }
     );
@@ -973,5 +991,75 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTravellerCount();
 
     updateReview();
+
+
+    /* =========================================
+       EDIT MODE: fill the form with the saved trip
+    ========================================== */
+
+    async function loadTripForEditing() {
+
+        createTripButton.disabled = true;
+
+        try {
+
+            const trip = await OffWeGoAPI.getTrip(editId);
+
+            destination = trip.destination;
+            destinationSearch.value = trip.destination;
+            selectedDestination.textContent = trip.destination;
+
+            destinationCards.forEach(function (card) {
+                card.classList.toggle(
+                    "selected",
+                    card.dataset.destination === trip.destination
+                );
+            });
+
+            startDate.value = trip.startDate;
+            endDate.value = trip.endDate;
+
+            adults = trip.adults;
+            children = trip.children;
+            updateTravellerCount();
+
+            budget.value = trip.budgetAmount > 0 ? trip.budgetAmount : "";
+
+            selectedInterests = trip.interests.slice();
+            interestButtons.forEach(function (button) {
+                button.classList.toggle(
+                    "selected",
+                    selectedInterests.includes(button.dataset.interest)
+                );
+            });
+
+            document.getElementById("notes").value = trip.notes;
+
+            createTripButton.textContent = "Save Changes ✔";
+            document.title = "Edit Trip - OffWeGo";
+
+            const heading = document.querySelector(".page-heading h1");
+            if (heading) {
+                heading.textContent = "Edit Your Trip";
+            }
+
+            updateReview();
+
+            createTripButton.disabled = false;
+
+        } catch (error) {
+
+            if (error.status !== 401) {
+                alert(error.message);
+                window.location.href = "dashboard.html";
+            }
+
+        }
+
+    }
+
+    if (editId) {
+        loadTripForEditing();
+    }
 
 });

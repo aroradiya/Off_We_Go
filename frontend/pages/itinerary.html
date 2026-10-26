@@ -51,6 +51,18 @@
 
         </div>
 
+        <div class="trip-actions">
+
+            <a href="trip.html" id="editTripButton" class="edit-trip-btn">
+                ✎ Edit trip
+            </a>
+
+            <button type="button" id="deleteTripButton" class="delete-trip-btn">
+                🗑 Delete trip
+            </button>
+
+        </div>
+
     </main>
 
     <!-- =========================================
@@ -59,13 +71,41 @@
 
 <section class="itinerary-section">
 
-    <div class="section-heading">
+    <div class="workspace-tabs">
 
-        <h2>Your Itinerary</h2>
+        <button type="button" id="tabItinerary" class="workspace-tab active">
+            🗓 Itinerary
+        </button>
 
-        <p>
-            A day-by-day plan for your trip.
-        </p>
+        <button type="button" id="tabBookings" class="workspace-tab">
+            🎫 Bookings <span id="bookingCount"></span>
+        </button>
+
+    </div>
+
+    <div id="itineraryPanel">
+
+    <div class="section-heading section-heading-row">
+
+        <div>
+
+            <h2>Your Itinerary</h2>
+
+            <p>
+                A day-by-day plan for your trip. Add, edit, remove or reorder activities.
+            </p>
+
+        </div>
+
+        <div class="itinerary-tools">
+
+            <span id="itineraryStatus" class="itinerary-status"></span>
+
+            <button type="button" id="resetItineraryButton" class="reset-itinerary-btn">
+                ↺ Reset to suggested plan
+            </button>
+
+        </div>
 
     </div>
 
@@ -73,9 +113,45 @@
         <!-- JavaScript will generate the itinerary here -->
     </div>
 
+    </div>
+
+    <div id="bookingsPanel" hidden>
+
+        <div class="section-heading section-heading-row">
+
+            <div>
+
+                <h2>Your Bookings</h2>
+
+                <p>
+                    Keep your flights, stays and other bookings for this trip in one place.
+                </p>
+
+            </div>
+
+            <div class="itinerary-tools">
+
+                <button type="button" id="addBookingButton" class="small-btn primary">
+                    + Add booking
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="bookingSummary" class="booking-summary"></div>
+
+        <div id="bookingFormArea"></div>
+
+        <div id="bookingList" class="booking-list"></div>
+
+    </div>
+
 </section>
 
+    <script src="../js/api.js"></script>
     <script src="../js/itinerary.js"></script>
+    <script src="../js/bookingsfront.js"></script>
 
 </body>
 

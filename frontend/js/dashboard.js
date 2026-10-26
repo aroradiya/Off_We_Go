@@ -1,12 +1,9 @@
-
-
-
 // AUTHENTICATION CHECK 
 
 const loggedInUser =
     JSON.parse(localStorage.getItem("offwegoLoggedInUser"));
 
-if (!loggedInUser) {
+if (!loggedInUser || !OffWeGoAPI.getToken()) {
 
     window.location.href = "login.html";
 
@@ -38,8 +35,10 @@ const tripGrid = document.getElementById("tripGrid");
 const viewAllContainer =
     document.getElementById("viewAllContainer");
 
-const trips =
-    JSON.parse(localStorage.getItem("offwegoTrips")) || [];
+// Trips now come from the backend, so everything that uses them runs inside this function
+async function loadDashboardTrips() {
+
+const trips = await OffWeGoAPI.listTrips();
 
 
 // ==========================================
@@ -83,7 +82,7 @@ dashboardTrips.forEach(function (trip) {
 
     card.classList.add("trip-card");
 
-    card.href = "itinerary.html?trip=" + trips.indexOf(trip);
+    card.href = "itinerary.html?id=" + trip.id;
 
     card.innerHTML = `
         <div class="trip-image">
@@ -146,6 +145,13 @@ if (viewAllContainer) {
 
 }
 
+}
+
+loadDashboardTrips().catch(function (error) {
+    console.error(error);
+    if (error.status !== 401) alert(error.message);
+});
+
 // NEW TRIP BUTTON
 
 const newTripBtn = document.getElementById("newTripBtn");
@@ -205,7 +211,7 @@ if (logoutBtn) {
 
     logoutBtn.addEventListener("click", function () {
 
-        localStorage.removeItem("offwegoLoggedInUser");
+        OffWeGoAPI.clearSession();
 
         window.location.href = "login.html";
 

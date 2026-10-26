@@ -5,7 +5,7 @@
 const loggedInUser =
     JSON.parse(localStorage.getItem("offwegoLoggedInUser"));
 
-if (!loggedInUser) {
+if (!loggedInUser || !OffWeGoAPI.getToken()) {
 
     window.location.href = "login.html";
 
@@ -22,8 +22,10 @@ const upcomingGrid =
 const completedGrid =
     document.getElementById("completedGrid");
 
-const trips =
-    JSON.parse(localStorage.getItem("offwegoTrips")) || [];
+// Trips now come from the backend, so everything that uses them runs inside this function
+async function loadMyTrips() {
+
+const trips = await OffWeGoAPI.listTrips();
 
 
 // ==========================================
@@ -32,7 +34,7 @@ const trips =
 
 if (trips.length === 0) {
 
-    tripGrid.innerHTML = `
+    upcomingGrid.innerHTML = `
         <div class="empty-trips">
 
             <h2>No trips yet</h2>
@@ -158,3 +160,9 @@ completedTrips.forEach(function (trip) {
 
 });
 
+}
+
+loadMyTrips().catch(function (error) {
+    console.error(error);
+    if (error.status !== 401) alert(error.message);
+});

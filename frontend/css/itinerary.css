@@ -101,3 +101,526 @@ h1 {
     font-size: 13px;
     color: #7b8493;
 }
+
+
+/* ================================
+   TRIP ACTIONS (EDIT / DELETE)
+================================ */
+
+.trip-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.edit-trip-btn,
+.delete-trip-btn {
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.edit-trip-btn {
+    background: #1764e8;
+    border: 1px solid #1764e8;
+    color: #ffffff;
+}
+
+.edit-trip-btn:hover {
+    background: #1259d0;
+}
+
+.delete-trip-btn {
+    background: #ffffff;
+    border: 1px solid #d93636;
+    color: #d93636;
+}
+
+.delete-trip-btn:hover {
+    background: #fdecec;
+}
+
+.delete-trip-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* ================================
+   EDITABLE ITINERARY
+================================ */
+
+.section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.itinerary-tools {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.itinerary-status {
+    font-size: 13px;
+    color: #2e8b57;
+}
+
+.itinerary-status.error {
+    color: #d93636;
+}
+
+.reset-itinerary-btn,
+.small-btn {
+    background: #ffffff;
+    border: 1px solid #cfd8e6;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #17439a;
+    cursor: pointer;
+}
+
+.reset-itinerary-btn:hover,
+.small-btn:hover {
+    background: #f0f5ff;
+}
+
+.small-btn.primary {
+    background: #1764e8;
+    border-color: #1764e8;
+    color: #ffffff;
+}
+
+.small-btn.primary:hover {
+    background: #1259d0;
+}
+
+.small-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-date {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.activity-list {
+    margin-top: 14px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid #eef1f6;
+}
+
+.activity-item:first-child {
+    border-top: none;
+}
+
+.activity-icon {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.activity-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-info strong {
+    font-size: 15px;
+    color: #17233c;
+}
+
+.activity-info p {
+    margin: 4px 0 0;
+}
+
+.activity-time {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: #e8f0ff;
+    color: #17439a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.activity-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e0e6ef;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #4a566b;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.icon-btn:hover:not(:disabled) {
+    background: #f0f5ff;
+}
+
+.icon-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.empty-day {
+    padding: 10px 0;
+}
+
+.add-activity-area {
+    margin-top: 12px;
+}
+
+.activity-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+    margin: 6px 0;
+    background: #f7f9fc;
+    border: 1px solid #e0e6ef;
+    border-radius: 10px;
+}
+
+.activity-input {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 9px 11px;
+    border: 1px solid #cfd8e6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.activity-input-time {
+    flex: 0 0 120px;
+}
+
+.activity-form-buttons {
+    display: flex;
+    gap: 8px;
+    flex: 1 1 100%;
+}
+
+
+/* ================================
+   TRIP TABS (ITINERARY / BOOKINGS)
+================================ */
+
+.workspace-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #e0e6ef;
+}
+
+.workspace-tab {
+    padding: 11px 18px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6b7588;
+    cursor: pointer;
+}
+
+.workspace-tab:hover {
+    color: #17439a;
+}
+
+.workspace-tab.active {
+    color: #1764e8;
+    border-bottom-color: #1764e8;
+}
+
+
+/* ================================
+   BOOKINGS
+================================ */
+
+.booking-summary {
+    margin-bottom: 18px;
+}
+
+.summary-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.summary-chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.summary-chip.booked {
+    background: #e6f6ec;
+    color: #1f7a45;
+}
+
+.summary-chip.planned {
+    background: #fff4dc;
+    color: #9a6a00;
+}
+
+.booking-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border: 1px solid #e7ebf1;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(30, 50, 80, 0.05);
+}
+
+.booking-card.cancelled {
+    opacity: 0.6;
+}
+
+.booking-card.cancelled strong {
+    text-decoration: line-through;
+}
+
+.booking-icon {
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.booking-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.booking-main strong {
+    font-size: 16px;
+    color: #17233c;
+}
+
+.booking-main p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #7b8493;
+}
+
+.booking-main .booking-ref {
+    color: #17439a;
+    font-weight: 600;
+}
+
+.booking-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.booking-cost {
+    font-size: 16px;
+    font-weight: 700;
+    color: #17233c;
+}
+
+.status-badge {
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-badge.booked {
+    background: #e6f6ec;
+    color: #1f7a45;
+}
+
+.status-badge.planned {
+    background: #fff4dc;
+    color: #9a6a00;
+}
+
+.status-badge.cancelled {
+    background: #fdecec;
+    color: #d93636;
+}
+
+.empty-bookings {
+    padding: 24px;
+    text-align: center;
+    background: #f7f9fc;
+    border: 1px dashed #cfd8e6;
+    border-radius: 12px;
+    color: #7b8493;
+}
+
+.booking-form {
+    padding: 18px;
+    margin-bottom: 18px;
+    background: #f7f9fc;
+    border: 1px solid #e0e6ef;
+    border-radius: 12px;
+}
+
+.booking-form h3 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    color: #17233c;
+}
+
+.booking-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.booking-field > span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a566b;
+}
+
+.booking-field.wide {
+    grid-column: 1 / -1;
+}
+
+.booking-form .activity-input {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+
+    .booking-card {
+        flex-wrap: wrap;
+    }
+
+    .booking-side {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+}
+
+
+/* ================================
+   BUDGET CARD (BOOKINGS TAB)
+================================ */
+
+.budget-card {
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    background: #ffffff;
+    border: 1px solid #e7ebf1;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(30, 50, 80, 0.05);
+}
+
+.budget-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.budget-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7588;
+}
+
+.budget-total {
+    font-size: 20px;
+    color: #17233c;
+}
+
+.budget-bar {
+    display: flex;
+    height: 10px;
+    overflow: hidden;
+    background: #eef1f6;
+    border-radius: 999px;
+}
+
+.budget-fill.booked {
+    background: #2e9e5b;
+}
+
+.budget-fill.booked.over {
+    background: #d93636;
+}
+
+.budget-fill.planned {
+    background: #f2b84b;
+}
+
+.budget-line {
+    margin: 10px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #17233c;
+}
+
+.budget-line.over {
+    color: #d93636;
+}
+
+.budget-note,
+.budget-hint {
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: #7b8493;
+}
+
+.budget-hint {
+    margin: 0;
+}
+
+.budget-hint a {
+    color: #1764e8;
+    font-weight: 600;
+}
