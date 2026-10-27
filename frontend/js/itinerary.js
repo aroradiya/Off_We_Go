@@ -69,6 +69,41 @@ if (deleteTripButton) {
 }
 
 
+const coverTripButton = document.getElementById("coverTripButton");
+const coverFileInput = document.getElementById("coverFileInput");
+const coverStatus = document.getElementById("coverStatus");
+
+if (coverTripButton && coverFileInput) {
+
+    coverTripButton.addEventListener("click", function () {
+        coverFileInput.click();
+    });
+
+    coverFileInput.addEventListener("change", async function () {
+        const file = coverFileInput.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        coverTripButton.disabled = true;
+        coverStatus.textContent = "Uploading...";
+
+        try {
+            await OffWeGoAPI.uploadTripCover(trip.id, file);
+            coverStatus.textContent = "Cover photo updated";
+        } catch (error) {
+            if (error.status !== 401) {
+                coverStatus.textContent = error.message;
+            }
+        } finally {
+            coverTripButton.disabled = false;
+            coverFileInput.value = "";
+        }
+    });
+}
+
+
 // ==========================================
 // CHECK IF TRIP EXISTS
 // ==========================================

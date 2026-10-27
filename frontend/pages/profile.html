@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OffWeGo - Profile</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-text">OffWeGo</span>
+                <span class="logo-plane">✈</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="mytrips.html" class="nav-item">
+                    <span class="nav-icon">▣</span>
+                    <span>My Trips</span>
+                </a>
+
+                <a href="wishlist.html" class="nav-item">
+                    <span class="nav-icon">♡</span>
+                    <span>Wishlist</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Bookings</span>
+                </a>
+
+                <a href="assistant.html" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    <span>Travel Assistant</span>
+                </a>
+
+                <a href="profile.html" class="nav-item active">
+                    <span class="nav-icon">♙</span>
+                    <span>Profile</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>⇥</span>
+                    <span>Log out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div></div>
+
+                <div class="topbar-right">
+                    <div class="profile-avatar" id="profileAvatar">U</div>
+                </div>
+
+            </header>
+
+            <section class="dashboard-content">
+
+                <div class="welcome-section">
+                    <div>
+                        <h1>Your profile</h1>
+                        <p>Your account details and profile photo.</p>
+                    </div>
+                </div>
+
+                <section class="profile-card">
+
+                    <div class="profile-photo" id="profilePhoto">U</div>
+
+                    <div class="profile-details">
+
+                        <h2 id="profileName"></h2>
+                        <p class="profile-email" id="profileEmail"></p>
+
+                        <div class="profile-actions">
+
+                            <button type="button" id="changePhotoButton" class="photo-btn primary">
+                                Change photo
+                            </button>
+
+                            <button type="button" id="removePhotoButton" class="photo-btn danger" hidden>
+                                Remove photo
+                            </button>
+
+                            <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp" hidden>
+
+                        </div>
+
+                        <p class="photo-status" id="photoStatus"></p>
+                        <p class="photo-hint">JPG, PNG or WebP, up to 5 MB.</p>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/profile.js"></script>
+
+</body>
+</html>

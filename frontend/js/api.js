@@ -26,7 +26,8 @@ const OffWeGoAPI = {
     async request(path, options = {}) {
         const method = options.method || "GET";
 
-        const headers = { "Content-Type": "application/json" };
+        const isFormData = options.body instanceof FormData;
+        const headers = isFormData ? {} : { "Content-Type": "application/json" };
         const token = this.getToken();
         if (token) {
             headers.Authorization = "Bearer " + token;
@@ -37,7 +38,7 @@ const OffWeGoAPI = {
             response = await fetch(API_BASE + path, {
                 method: method,
                 headers: headers,
-                body: options.body ? JSON.stringify(options.body) : undefined,
+                body: options.body ? (isFormData ? options.body : JSON.stringify(options.body)) : undefined,
             });
         } catch (error) {
             throw new Error("Unable to connect to the server. Is the backend running?");
@@ -61,6 +62,25 @@ const OffWeGoAPI = {
         }
 
         return data;
+    },
+
+    async getMe() {
+        const data = await this.request("/auth/me");
+        localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+        return data.user;
+    },
+    async uploadAvatar(file) {
+        const formData = new FormData();
+        formData.append("avatar", file);
+        const data = await this.request("/auth/me/avatar", { method: "PUT", body: formData });
+        localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+        return data.user;
+    },
+
+    async deleteAvatar() {
+        const data = await this.request("/auth/me/avatar", { method: "DELETE" });
+        localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+        return data.user;
     },
 
     login(email, password) {
@@ -148,12 +168,35 @@ const OffWeGoAPI = {
         );
         return toWebsiteBooking(data.booking);
     },
+    async uploadBookingDocument(tripId, bookingId, file) {
+        const formData = new FormData();
+        formData.append("document", file);
+        const data = await this.request(
+            "/trips/" + encodeURIComponent(tripId) + "/bookings/" + encodeURIComponent(bookingId) + "/document",
+            { method: "PUT", body: formData }
+        );
+        return toWebsiteBooking(data.booking);
+    },
+    async deleteBookingDocument(tripId, bookingId) {
+        const data = await this.request(
+            "/trips/" + encodeURIComponent(tripId) + "/bookings/" + encodeURIComponent(bookingId) + "/document",
+            { method: "DELETE" }
+        );
+        return toWebsiteBooking(data.booking);
+    },
 
     deleteBooking(tripId, bookingId) {
         return this.request(
             "/trips/" + encodeURIComponent(tripId) + "/bookings/" + encodeURIComponent(bookingId),
             { method: "DELETE" }
         );
+    },
+
+    async uploadTripCover(id, file) {
+        const formData = new FormData();
+        formData.append("cover", file);
+        const data = await this.request("/trips/" + encodeURIComponent(id) + "/cover", { method: "PUT", body: formData });
+        return toWebsiteTrip(data.trip);
     },
 
     deleteTrip(id) {
@@ -194,6 +237,7 @@ function toWebsiteTrip(trip) {
         budget: budgetAmount > 0 ? formatMoney(budgetAmount, currency) : (trip.budgetRange || ""),
         interests: trip.interests || [],
         notes: trip.notes || "",
+        coverUrl: (trip.coverImage && trip.coverImage.url) || "",
         itinerary: trip.itinerary || [],
     };
 }
@@ -212,8 +256,10 @@ function toWebsiteBooking(booking) {
         currency: booking.currency || "INR",
         status: booking.status,
         notes: booking.notes || "",
+        documentUrl: (booking.document && booking.document.url) || "",
+        documentName: (booking.document && booking.document.originalName) || "",
     };
-}
+    };
 
 function toApiBooking(booking) {
     return {

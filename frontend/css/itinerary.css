@@ -111,10 +111,12 @@ h1 {
     display: flex;
     gap: 12px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .edit-trip-btn,
-.delete-trip-btn {
+.delete-trip-btn,
+.cover-trip-btn {
     border-radius: 8px;
     padding: 11px 18px;
     font-family: inherit;
@@ -623,4 +625,58 @@ h1 {
 .budget-hint a {
     color: #1764e8;
     font-weight: 600;
+}
+.cover-trip-btn {
+    background: #ffffff;
+    border: 1px solid #1764e8;
+    color: #1764e8;
+}
+
+.cover-trip-btn:hover {
+    background: #eaf1fd;
+}
+
+.cover-trip-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cover-status {
+    align-self: center;
+    font-size: 14px;
+}
+.booking-main .booking-document {
+    margin: 6px 0 0;
+}
+
+.booking-document a {
+    color: #1764e8;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.booking-document a:hover {
+    text-decoration: underline;
+}
+.booking-document-remove {
+    margin-left: 10px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #d93636;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.booking-document-remove:hover {
+    text-decoration: underline;
+}
+
+.booking-document-remove:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

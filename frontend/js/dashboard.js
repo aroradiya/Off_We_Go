@@ -25,6 +25,25 @@ if (profileAvatar) {
         loggedInUser.name.charAt(0).toUpperCase();
 
 }
+if (profileAvatar) {
+
+    OffWeGoAPI.getMe()
+        .then(function (user) {
+
+            if (user.avatar && user.avatar.url && user.avatar.url.startsWith("https://")) {
+
+                const picture = document.createElement("img");
+                picture.src = user.avatar.url;
+                picture.alt = user.name;
+
+                profileAvatar.replaceChildren(picture);
+
+            }
+
+        })
+        .catch(function () {});
+
+}
 
 // ==========================================
 // LOAD SAVED TRIPS
@@ -83,12 +102,13 @@ dashboardTrips.forEach(function (trip) {
     card.classList.add("trip-card");
 
     card.href = "itinerary.html?id=" + trip.id;
+    const coverSrc = trip.coverUrl || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=85";
 
     card.innerHTML = `
         <div class="trip-image">
 
             <img
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=85"
+                src="${coverSrc}"
                 alt="${trip.destination}"
             >
 

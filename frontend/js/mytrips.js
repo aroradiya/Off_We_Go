@@ -94,11 +94,13 @@ function createTripCard(trip, status) {
     card.href =
         "itinerary.html?id=" + trip.id;
 
+ 
+    const coverSrc = trip.coverUrl || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=85";
     card.innerHTML = `
         <div class="trip-image">
 
             <img
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=700&q=85"
+                src="${coverSrc}"
                 alt="${trip.destination}"
             >
 

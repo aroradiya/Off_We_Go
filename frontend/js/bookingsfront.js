@@ -303,6 +303,49 @@
             main.appendChild(el("p", "booking-notes", booking.notes));
         }
 
+        if (booking.documentUrl && booking.documentUrl.startsWith("https://")) {
+
+            const documentLine = el("p", "booking-document");
+
+            const documentLink = el("a", "", "📎 " + (booking.documentName || "View document"));
+            documentLink.href = booking.documentUrl;
+            documentLink.target = "_blank";
+            documentLink.rel = "noopener noreferrer";
+
+            const removeDocumentButton = el("button", "booking-document-remove", "Remove");
+            removeDocumentButton.type = "button";
+            removeDocumentButton.addEventListener("click", async function () {
+
+                if (!confirm("Remove the document from \"" + booking.title + "\"?")) {
+                    return;
+                }
+
+                removeDocumentButton.disabled = true;
+
+                try {
+
+                    const updated = await OffWeGoAPI.deleteBookingDocument(tripId, booking.id);
+
+                    bookings = bookings.map(function (item) {
+                        return item.id === booking.id ? updated : item;
+                    });
+
+                    render();
+
+                } catch (error) {
+
+                    showError(error);
+                    removeDocumentButton.disabled = false;
+
+                }
+
+            });
+
+            documentLine.appendChild(documentLink);
+            documentLine.appendChild(removeDocumentButton);
+            main.appendChild(documentLine);
+        }
+
         card.appendChild(main);
 
         const side = el("div", "booking-side");
@@ -314,6 +357,50 @@
         }
 
         const actions = el("div", "activity-actions");
+
+        const attachInput = el("input");
+        attachInput.type = "file";
+        attachInput.accept = "image/jpeg,image/png,image/webp,application/pdf";
+        attachInput.hidden = true;
+
+        const attachButton = el("button", "icon-btn", "📎");
+        attachButton.type = "button";
+        attachButton.title = booking.documentUrl ? "Replace document" : "Attach document";
+        attachButton.addEventListener("click", function () {
+            attachInput.click();
+        });
+
+        attachInput.addEventListener("change", async function () {
+
+            const file = attachInput.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            attachButton.disabled = true;
+            attachButton.textContent = "…";
+
+            try {
+
+                const updated = await OffWeGoAPI.uploadBookingDocument(tripId, booking.id, file);
+
+                bookings = bookings.map(function (item) {
+                    return item.id === booking.id ? updated : item;
+                });
+
+                render();
+
+            } catch (error) {
+
+                showError(error);
+                attachButton.disabled = false;
+                attachButton.textContent = "📎";
+                attachInput.value = "";
+
+            }
+
+        });
 
         const editButton = el("button", "icon-btn", "✎");
         editButton.type = "button";
@@ -352,6 +439,8 @@
 
         });
 
+        actions.appendChild(attachInput);
+        actions.appendChild(attachButton);
         actions.appendChild(editButton);
         actions.appendChild(deleteButton);
         side.appendChild(actions);
