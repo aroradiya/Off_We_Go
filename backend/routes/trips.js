@@ -186,6 +186,14 @@ router.delete("/:id", async (req, res) => {
 
     const coverPublicId = trip.coverImage && trip.coverImage.publicId;
 
+    // Remember the booking documents now, because the bookings are deleted below
+    const bookingsWithDocuments = await Booking.find({
+        trip: trip._id,
+        user: req.user._id,
+        "document.publicId": { $exists: true, $ne: "" },
+    }).select("document");
+    const documents = bookingsWithDocuments.map((booking) => booking.document);
+
     // Bookings belong to the trip, so they go with it
     await Booking.deleteMany({ trip: trip._id, user: req.user._id });
     await trip.deleteOne();
@@ -195,6 +203,14 @@ router.delete("/:id", async (req, res) => {
             await deleteFile(coverPublicId);
         } catch (deleteError) {
             console.error("Could not delete cover of deleted trip:", deleteError);
+        }
+    }
+
+    for (const document of documents) {
+        try {
+            await deleteFile(document.publicId, document.resourceType || "image");
+        } catch (deleteError) {
+            console.error("Could not delete document of deleted trip:", deleteError);
         }
     }
 

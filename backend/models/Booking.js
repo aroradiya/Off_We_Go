@@ -24,6 +24,12 @@ const bookingSchema = new mongoose.Schema(
         status: { type: String, enum: { values: BOOKING_STATUSES, message: "Unknown booking status" }, default: "booked" },
 
         notes: { type: String, trim: true, maxlength: 500, default: "" },
+        document: {
+            url: { type: String, default: "" },
+            publicId: { type: String, default: "" },
+            resourceType: { type: String, default: "image" },
+            originalName: { type: String, default: "", maxlength: 100 },
+        },
     },
     { timestamps: true }
 );

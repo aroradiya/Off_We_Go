@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const Trip = require("../models/Trip");
 const Booking = require("../models/Booking");
 const { protect } = require("../middleware/authmid");
+const { uploadDocument } = require("../middleware/upload");
+const { uploadBuffer, deleteFile } = require("../config/cloudinary");
 
 // mergeParams lets this router see :tripId from the path it is mounted on
 const router = express.Router({ mergeParams: true });
@@ -85,6 +87,77 @@ router.put("/:bookingId", async (req, res) => {
     }
 });
 
+// PUT /api/trips/:tripId/bookings/:bookingId/document  -> attach or replace the document of a booking
+router.put("/:bookingId/document", uploadDocument("document"), async (req, res) => {
+    try {
+        const trip = await findOwnTrip(req);
+        if (!trip) return res.status(404).json({ message: "Trip not found" });
+
+        const booking = await findOwnBooking(req, trip);
+        if (!booking) return res.status(404).json({ message: "Booking not found" });
+
+        if (!req.file) {
+            return res.status(400).json({ message: "Please select a document" });
+        }
+
+        const result = await uploadBuffer(req.file.buffer, {
+            folder: "booking-documents",
+            resourceType: "auto",
+        });
+
+        const oldPublicId = booking.document && booking.document.publicId;
+        const oldResourceType = (booking.document && booking.document.resourceType) || "image";
+
+        booking.document = {
+            url: result.secure_url,
+            publicId: result.public_id,
+            resourceType: result.resource_type,
+            originalName: req.file.originalname.slice(0, 100),
+        };
+        await booking.save();
+
+        if (oldPublicId) {
+            try {
+                await deleteFile(oldPublicId, oldResourceType);
+            } catch (deleteError) {
+                console.error("Could not delete old document:", deleteError);
+            }
+        }
+
+        return res.json({ booking });
+    } catch (error) {
+        console.error("Document upload error:", error);
+        return res.status(500).json({ message: "Failed to upload document" });
+    }
+});
+
+// DELETE /api/trips/:tripId/bookings/:bookingId/document  -> remove only the document of a booking
+router.delete("/:bookingId/document", async (req, res) => {
+    const trip = await findOwnTrip(req);
+    if (!trip) return res.status(404).json({ message: "Trip not found" });
+
+    const booking = await findOwnBooking(req, trip);
+    if (!booking) return res.status(404).json({ message: "Booking not found" });
+
+    const documentPublicId = booking.document && booking.document.publicId;
+    const documentResourceType = (booking.document && booking.document.resourceType) || "image";
+
+    if (!documentPublicId) {
+        return res.status(404).json({ message: "This booking has no document" });
+    }
+
+    booking.document = { url: "", publicId: "", resourceType: "image", originalName: "" };
+    await booking.save();
+
+    try {
+        await deleteFile(documentPublicId, documentResourceType);
+    } catch (deleteError) {
+        console.error("Could not delete document from Cloudinary:", deleteError);
+    }
+
+    res.json({ booking });
+});
+
 // DELETE /api/trips/:tripId/bookings/:bookingId  -> remove a booking
 router.delete("/:bookingId", async (req, res) => {
     const trip = await findOwnTrip(req);
@@ -93,7 +166,19 @@ router.delete("/:bookingId", async (req, res) => {
     const booking = await findOwnBooking(req, trip);
     if (!booking) return res.status(404).json({ message: "Booking not found" });
 
+    const documentPublicId = booking.document && booking.document.publicId;
+    const documentResourceType = (booking.document && booking.document.resourceType) || "image";
+
     await booking.deleteOne();
+
+    if (documentPublicId) {
+        try {
+            await deleteFile(documentPublicId, documentResourceType);
+        } catch (deleteError) {
+            console.error("Could not delete document of deleted booking:", deleteError);
+        }
+    }
+
     res.json({ message: "Booking deleted" });
 });
 
