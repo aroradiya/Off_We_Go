@@ -2,6 +2,8 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { protect } = require("../middleware/authmid");
+const { uploadImage } = require("../middleware/upload");
+const { uploadBuffer, deleteFile } = require("../config/cloudinary");
 
 const router = express.Router();
 
@@ -54,6 +56,61 @@ router.post("/login", async (req, res) => {
 // GET /api/auth/me  (needs header: Authorization: Bearer <token>)
 router.get("/me", protect, (req, res) => {
     res.json({ user: req.user });
+});
+
+// PUT /api/auth/me/avatar  -> upload or replace my profile picture
+router.put("/me/avatar", protect, uploadImage("avatar"), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: "Please select a picture" });
+        }
+
+        const result = await uploadBuffer(req.file.buffer, { folder: "avatars" });
+
+        const oldPublicId = req.user.avatar && req.user.avatar.publicId;
+
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            { avatar: { url: result.secure_url, publicId: result.public_id } },
+            { new: true }
+        );
+
+        if (oldPublicId) {
+            try {
+                await deleteFile(oldPublicId);
+            } catch (deleteError) {
+                console.error("Could not delete old profile picture:", deleteError);
+            }
+        }
+
+        return res.json({ user });
+    } catch (error) {
+        console.error("Profile picture upload error:", error);
+        return res.status(500).json({ message: "Failed to upload profile picture" });
+    }
+});
+
+// DELETE /api/auth/me/avatar  -> remove my profile picture
+router.delete("/me/avatar", protect, async (req, res) => {
+    const publicId = req.user.avatar && req.user.avatar.publicId;
+
+    if (!publicId) {
+        return res.status(404).json({ message: "You have no profile picture" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user._id,
+        { avatar: { url: "", publicId: "" } },
+        { new: true }
+    );
+
+    try {
+        await deleteFile(publicId);
+    } catch (deleteError) {
+        console.error("Could not delete profile picture from Cloudinary:", deleteError);
+    }
+
+    res.json({ user });
 });
 
 module.exports = router;

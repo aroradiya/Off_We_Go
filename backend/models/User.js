@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema(
         email: { type: String, required: true, unique: true, lowercase: true, trim: true },
         password: { type: String, required: true, minlength: 6, select: false },
         role: { type: String, enum: ["user", "admin"], default: "user" },
+        avatar: {
+            url: { type: String, default: "" },
+            publicId: { type: String, default: "" },
+        },
     },
     { timestamps: true }
 );
@@ -26,6 +30,7 @@ userSchema.set("toJSON", {
     transform: (doc, ret) => {
         delete ret.password;
         delete ret.__v;
+        if (ret.avatar) delete ret.avatar.publicId;
         return ret;
     },
 });
