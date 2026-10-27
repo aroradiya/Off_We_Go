@@ -1077,4 +1077,19 @@ document.addEventListener("DOMContentLoaded", function () {
         loadTripForEditing();
     }
 
+        // Coming from Explore: trip.html?destination=Goa
+    const presetDestination = new URLSearchParams(window.location.search).get("destination");
+
+    if (!editId && presetDestination) {
+        destination = presetDestination.trim().slice(0, 100);
+        destinationSearch.value = destination;
+        selectedDestination.textContent = destination;
+
+        destinationCards.forEach(function (card) {
+            card.classList.toggle("selected", card.dataset.destination === destination);
+        });
+
+        updateReview();
+    }
+
 });

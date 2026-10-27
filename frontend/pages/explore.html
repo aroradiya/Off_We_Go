@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Destinations - OffWeGo</title>
+    <link rel="stylesheet" href="../css/explore.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <a href="../pages/dashboard.html" class="logo">OffWeGo <span class="logo-plane">✈</span></a>
+        
+
+        <div class="topbar-right">
+            <nav class="topbar-nav">
+                <a href="../index.html">Home</a>
+                <a href="explore.html" class="active">Explore</a>
+            </nav>
+            <div id="topbarAuth"></div>
+        </div>
+    </header>
+
+    <main class="page">
+
+        <section class="page-heading">
+            <h1>Explore destinations</h1>
+            <p>Find your next trip, then plan it in a few clicks.</p>
+        </section>
+
+        <section class="filters">
+            <input type="search" id="searchInput" placeholder="Search by place, country or region" autocomplete="off">
+
+            <select id="countryFilter">
+                <option value="">All countries</option>
+            </select>
+
+            <select id="monthFilter">
+                <option value="">Any month</option>
+            </select>
+
+            <select id="sortSelect">
+                <option value="name">Sort: A to Z</option>
+                <option value="country">Sort: Country</option>
+            </select>
+        </section>
+
+        <div class="chips" id="tagChips"></div>
+
+        <div class="results-bar">
+            <span id="resultsCount"></span>
+            <button type="button" id="clearFilters" hidden>Clear filters</button>
+        </div>
+
+        <section class="dest-grid" id="destGrid">
+            <div class="state-box">Loading destinations...</div>
+        </section>
+
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/destui.js"></script>
+    <script src="../js/explore.js"></script>
+
+</body>
+
+</html>
