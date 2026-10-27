@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Trip = require("../models/Trip");
 const Booking = require("../models/Booking");
+
 const { protect } = require("../middleware/authmid");
+const { uploadImage } = require("../middleware/upload");
+const { uploadBuffer, deleteFile } = require("../config/cloudinary");
 
 const router = express.Router();
 
@@ -136,14 +139,65 @@ router.put("/:id/itinerary", async (req, res) => {
     }
 });
 
+// PUT /api/trips/:id/cover  -> upload or replace the cover photo of one of my trips
+router.put("/:id/cover", uploadImage("cover"), async (req, res) => {
+    try {
+        const trip = await findOwnTrip(req);
+
+        if (!trip) {
+            return res.status(404).json({ message: "Trip not found" });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ message: "Please select a cover image" });
+        }
+
+        const result = await uploadBuffer(req.file.buffer, {
+            folder: "trip-covers",
+        });
+
+        const oldPublicId = trip.coverImage && trip.coverImage.publicId;
+
+        trip.coverImage = { url: result.secure_url, publicId: result.public_id };
+        await trip.save();
+
+        if (oldPublicId) {
+            try {
+                await deleteFile(oldPublicId);
+            } catch (deleteError) {
+                console.error("Could not delete old cover:", deleteError);
+            }
+        }
+
+        return res.json({
+            message: "Cover image uploaded successfully",
+            trip,
+        });
+    } catch (error) {
+        console.error("Cover upload error:", error);
+        return res.status(500).json({ message: "Failed to upload cover image" });
+    }
+});
+
 // DELETE /api/trips/:id  -> delete one of my trips
 router.delete("/:id", async (req, res) => {
     const trip = await findOwnTrip(req);
     if (!trip) return res.status(404).json({ message: "Trip not found" });
 
+    const coverPublicId = trip.coverImage && trip.coverImage.publicId;
+
     // Bookings belong to the trip, so they go with it
     await Booking.deleteMany({ trip: trip._id, user: req.user._id });
     await trip.deleteOne();
+
+    if (coverPublicId) {
+        try {
+            await deleteFile(coverPublicId);
+        } catch (deleteError) {
+            console.error("Could not delete cover of deleted trip:", deleteError);
+        }
+    }
+
     res.json({ message: "Trip deleted" });
 });
 

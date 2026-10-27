@@ -41,6 +41,10 @@ const tripSchema = new mongoose.Schema(
             amount: { type: Number, cast: "Budget must be a number", min: [0, "Budget cannot be negative"], max: [1000000000, "Budget is too large"], default: 0 },
             currency: { type: String, default: "INR", trim: true, uppercase: true, maxlength: 3 },
         },
+        coverImage: {
+        url: { type: String, default: "" },
+        publicId: { type: String, default: "" },
+        },
 
         interests: { type: [String], default: [] },
         notes: { type: String, trim: true, maxlength: 1000 },
@@ -59,7 +63,7 @@ const tripSchema = new mongoose.Schema(
         status: { type: String, enum: ["idea", "planning", "booked"], default: "planning" },
     },
     { timestamps: true }
-);
+ );
 
 // Rules that involve more than one field
 tripSchema.pre("validate", function () {
