@@ -125,6 +125,7 @@ dashboardTrips.forEach(function (trip) {
             <p class="trip-date">
                 ${trip.startDate} - ${trip.endDate}
             </p>
+            <p class="trip-weather"></p>
 
             <div class="trip-bottom">
 
@@ -143,6 +144,7 @@ dashboardTrips.forEach(function (trip) {
     `;
 
     tripGrid.appendChild(card);
+    addWeatherToCard(card, trip);
 
 });
 

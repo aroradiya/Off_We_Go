@@ -593,3 +593,13 @@ body {
     height: 100%;
     object-fit: cover;
 }
+.trip-weather {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f6f8b;
+}
+
+.trip-weather:empty {
+    display: none;
+}

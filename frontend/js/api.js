@@ -90,6 +90,9 @@ const OffWeGoAPI = {
     register(name, email, password) {
         return this.request("/auth/register", { method: "POST", body: { name: name, email: email, password: password } });
     },
+    getWeather(destination) {
+        return this.request("/weather?destination=" + encodeURIComponent(destination));
+    },
 
     // ---------- Destinations (the catalog) ----------
 

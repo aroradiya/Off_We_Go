@@ -119,6 +119,7 @@ function createTripCard(trip, status) {
             <p class="trip-date">
                 ${trip.startDate} - ${trip.endDate}
             </p>
+            <p class="trip-weather"></p>
 
             <div class="trip-bottom">
 
@@ -148,6 +149,7 @@ upcomingTrips.forEach(function (trip) {
     const card = createTripCard(trip, "Upcoming");
 
     upcomingGrid.appendChild(card);
+    addWeatherToCard(card, trip);
 
 });
 
