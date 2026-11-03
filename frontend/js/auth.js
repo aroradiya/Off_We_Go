@@ -15,7 +15,7 @@ if (loginForm) {
 
         // Basic validation
         if (!email || !password) {
-            alert("Please fill in both fields.");
+            showMessage("Please fill in both fields.");
             return;
         }
 
@@ -32,7 +32,7 @@ if (loginForm) {
             window.location.href = "dashboard.html";
 
         } catch (error) {
-            alert(error.message);
+            showMessage(error.message);
 
         } finally {
             if (button) button.disabled = false;
@@ -62,19 +62,19 @@ if (registerForm) {
 
         // Check empty fields
         if (!name || !email || !password || !confirmPassword) {
-            alert("Please fill in all fields.");
+            showMessage("Please fill in all fields.");
             return;
         }
 
         // Check password confirmation
         if (password !== confirmPassword) {
-            alert("Passwords do not match.");
+            showMessage("Passwords do not match.");
             return;
         }
 
         // Check password length
         if (password.length < 6) {
-            alert("Password must be at least 6 characters.");
+            showMessage("Password must be at least 6 characters.");
             return;
         }
 
@@ -85,12 +85,12 @@ if (registerForm) {
             // Ask the backend to create the account
             await OffWeGoAPI.register(name, email, password);
 
-            alert("Account created successfully!");
+            flashMessage("Account created successfully!");
 
             window.location.href = "login.html";
 
         } catch (error) {
-            alert(error.message);
+            showMessage(error.message);
 
         } finally {
             if (button) button.disabled = false;

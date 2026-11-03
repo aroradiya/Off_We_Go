@@ -103,7 +103,7 @@
 
     removePhotoButton.addEventListener("click", async function () {
 
-        if (!confirm("Remove your profile photo?")) {
+        if (!await askConfirm("Remove your profile photo?")) {
             return;
         }
 

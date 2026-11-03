@@ -32,7 +32,7 @@ try {
     trip = await OffWeGoAPI.getTrip(tripId);
 } catch (error) {
     if (error.status !== 401) {
-        alert(error.message);
+        showMessage(error.message);
         window.location.href = "dashboard.html";
     }
     return;
@@ -48,7 +48,7 @@ const deleteTripButton = document.getElementById("deleteTripButton");
 if (deleteTripButton) {
     deleteTripButton.addEventListener("click", async function () {
 
-        const sure = confirm(
+        const sure = await askConfirm(
             "Delete your trip to " + trip.destination + "? This cannot be undone."
         );
         if (!sure) {
@@ -61,7 +61,7 @@ if (deleteTripButton) {
             await OffWeGoAPI.deleteTrip(trip.id);
             window.location.href = "dashboard.html";
         } catch (error) {
-            if (error.status !== 401) alert(error.message);
+            if (error.status !== 401) showMessage(error.message);
             deleteTripButton.disabled = false;
         }
 
@@ -489,7 +489,7 @@ function activityForm(initial, onSave, onCancel) {
         const name = nameInput.value.trim();
 
         if (!name) {
-            alert("Please enter a name for the activity.");
+            showMessage("Please enter a name for the activity.");
             nameInput.focus();
             return;
         }
@@ -703,7 +703,7 @@ if (resetItineraryButton) {
 
     resetItineraryButton.addEventListener("click", async function () {
 
-        const sure = confirm(
+        const sure = await askConfirm(
             "Replace your itinerary with the suggested plan? Your changes will be lost."
         );
 

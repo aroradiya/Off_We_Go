@@ -168,5 +168,5 @@ completedTrips.forEach(function (trip) {
 
 loadMyTrips().catch(function (error) {
     console.error(error);
-    if (error.status !== 401) alert(error.message);
+    if (error.status !== 401) showMessage(error.message);
 });

@@ -171,7 +171,7 @@ if (viewAllContainer) {
 
 loadDashboardTrips().catch(function (error) {
     console.error(error);
-    if (error.status !== 401) alert(error.message);
+    if (error.status !== 401) showMessage(error.message);
 });
 
 // NEW TRIP BUTTON
@@ -214,7 +214,7 @@ if (surpriseBtn) {
         const destination =
             destinations[randomIndex];
 
-        alert(
+        showMessage(
             "✨ OffWeGo suggests: " + destination
         );
 

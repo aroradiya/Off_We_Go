@@ -95,7 +95,7 @@
 
         // 401 sends the user to the login page and 404 is handled by the itinerary script
         if (error.status !== 401 && error.status !== 404) {
-            alert(error.message);
+            showMessage(error.message);
         }
     }
 
@@ -316,7 +316,7 @@
             removeDocumentButton.type = "button";
             removeDocumentButton.addEventListener("click", async function () {
 
-                if (!confirm("Remove the document from \"" + booking.title + "\"?")) {
+                if (!await askConfirm("Remove the document from \"" + booking.title + "\"?")) {
                     return;
                 }
 
@@ -414,7 +414,7 @@
         deleteButton.title = "Delete";
         deleteButton.addEventListener("click", async function () {
 
-            if (!confirm("Delete the booking \"" + booking.title + "\"?")) {
+            if (!await askConfirm("Delete the booking \"" + booking.title + "\"?")) {
                 return;
             }
 
@@ -634,31 +634,31 @@
             };
 
             if (!data.title) {
-                alert("Please say what this booking is.");
+                showMessage("Please say what this booking is.");
                 titleInput.focus();
                 return;
             }
 
             if (!data.startDate) {
-                alert("Please choose a date.");
+                showMessage("Please choose a date.");
                 startInput.focus();
                 return;
             }
 
             if (data.endDate && data.endDate < data.startDate) {
-                alert("The end date cannot be before the start date.");
+                showMessage("The end date cannot be before the start date.");
                 endInput.focus();
                 return;
             }
 
             if (!(data.cost >= 0)) {
-                alert("Cost must be a number that is zero or more.");
+                showMessage("Cost must be a number that is zero or more.");
                 costInput.focus();
                 return;
             }
 
             if (!/^[A-Z]{3}$/.test(data.currency)) {
-                alert("Currency should be a 3-letter code like INR or USD.");
+                showMessage("Currency should be a 3-letter code like INR or USD.");
                 currencyInput.focus();
                 return;
             }

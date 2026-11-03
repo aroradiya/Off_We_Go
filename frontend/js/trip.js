@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (destination === "") {
 
-            alert(
+            showMessage(
                 "Please select a destination first."
             );
 
@@ -863,7 +863,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!(Number(budget.value) > 0)) {
 
-                alert(
+                showMessage(
                     "Please enter your total budget as a number greater than 0."
                 );
 
@@ -917,7 +917,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     await OffWeGoAPI.updateTrip(editId, tripData);
 
-                    alert(
+                    flashMessage(
                         "Your trip has been updated successfully! ✔"
                     );
 
@@ -928,7 +928,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     await OffWeGoAPI.createTrip(tripData);
 
-                    alert(
+                    flashMessage(
                         "Your trip has been created successfully! ✈"
                     );
 
@@ -939,7 +939,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             } catch (error) {
 
-                alert(error.message);
+                showMessage(error.message);
 
                 createTripButton.disabled = false;
 
@@ -1065,7 +1065,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
 
             if (error.status !== 401) {
-                alert(error.message);
+                showMessage(error.message);
                 window.location.href = "dashboard.html";
             }
 

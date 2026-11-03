@@ -296,3 +296,176 @@ function formatMoney(amount, currency) {
 function slugify(text) {
     return String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
+
+function showMessage(text) {
+    let box = document.getElementById("toast-box");
+    if (!box) {
+        box = document.createElement("div");
+        box.id = "toast-box";
+        document.body.appendChild(box);
+    }
+
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = text;
+    box.appendChild(toast);
+
+    setTimeout(function () {
+        toast.remove();
+    }, 3500);
+}
+
+function flashMessage(text) {
+    sessionStorage.setItem("offwegoFlash", text);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const flash = sessionStorage.getItem("offwegoFlash");
+    if (flash) {
+        sessionStorage.removeItem("offwegoFlash");
+        showMessage(flash);
+    }
+});
+
+const toastStyle = document.createElement("style");
+toastStyle.textContent = `
+    #toast-box {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none;
+    }
+
+    .toast {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #17233c;
+        padding: 12px 24px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        max-width: 90vw;
+        box-shadow: 0 6px 20px rgba(18, 59, 120, 0.15);
+        animation: toast-in 0.3s ease, toast-out 0.3s ease 3.2s forwards;
+    }
+
+    @keyframes toast-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes toast-out {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+`;
+document.head.appendChild(toastStyle);
+
+function askConfirm(text) {
+    return new Promise(function (resolve) {
+        const overlay = document.createElement("div");
+        overlay.className = "confirm-overlay";
+        overlay.innerHTML = `
+            <div class="confirm-box">
+                <p></p>
+                <div class="confirm-buttons">
+                    <button type="button" class="confirm-cancel">Cancel</button>
+                    <button type="button" class="confirm-ok">Yes, continue</button>
+                </div>
+            </div>
+        `;
+        overlay.querySelector("p").textContent = text;
+        document.body.appendChild(overlay);
+
+        function close(answer) {
+            overlay.remove();
+            resolve(answer);
+        }
+
+        overlay.querySelector(".confirm-ok").addEventListener("click", function () {
+            close(true);
+        });
+        overlay.querySelector(".confirm-cancel").addEventListener("click", function () {
+            close(false);
+        });
+        overlay.addEventListener("click", function (event) {
+            if (event.target === overlay) {
+                close(false);
+            }
+        });
+    });
+}
+
+const confirmStyle = document.createElement("style");
+confirmStyle.textContent = `
+    .confirm-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(23, 35, 60, 0.35);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100000;
+    }
+
+    .confirm-box {
+        background: rgba(255, 255, 255, 0.92);
+        padding: 26px 28px;
+        border-radius: 14px;
+        max-width: 380px;
+        width: 90%;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0 12px 36px rgba(18, 59, 120, 0.25);
+        text-align: center;
+    }
+
+    .confirm-box p {
+        margin: 0 0 22px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #17233c;
+        line-height: 1.5;
+    }
+
+    .confirm-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .confirm-buttons button {
+        padding: 10px 22px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .confirm-cancel {
+        background: #edf0f4;
+        color: #17233c;
+    }
+
+    .confirm-ok {
+        background: #123b78;
+        color: white;
+    }
+
+    .confirm-ok:hover {
+        background: #0c2d60;
+    }
+`;
+document.head.appendChild(confirmStyle);
